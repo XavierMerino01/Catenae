@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
     public float thrust;
     public float rotationSpeed;
     public float maxSpeed;
+    public float maxRotationSpeed;
 
     private Rigidbody2D rb;
 
@@ -45,5 +46,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         rb.AddTorque(rotation * Time.deltaTime);
+
+        rb.angularVelocity = Mathf.Clamp(rb.angularVelocity, -maxRotationSpeed, maxRotationSpeed);
     }
 }

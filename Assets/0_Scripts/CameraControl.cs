@@ -6,7 +6,7 @@ public class CameraControl : MonoBehaviour
 {
     [SerializeField] private GameObject Player;
 
-    private Vector3 cameraOffset = new Vector3 (0, 2.5f, -10.0f);
+    private Vector3 cameraOffset = new Vector3 (0, 10f, -10.0f);
 
 
 
