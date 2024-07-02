@@ -29,7 +29,9 @@ public class InputManager : MonoBehaviour
 
     void InitActions()
     {
-        myActionsManager.GameplayInputs.Jump.Enable();
+        myActionsManager.GameplayInputs.Impulse.Enable();
+        myActionsManager.GameplayInputs.RightRotation.Enable();
+        myActionsManager.GameplayInputs.LeftRotation.Enable();
 
     }
 
@@ -53,19 +55,31 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    /*public bool IMRedAttackAction()
+    public bool ImpulseActionPressed()
     {
-        return myActionsManager.Gameplay.RedAttack.IsPressed();
+        return myActionsManager.GameplayInputs.Impulse.IsPressed();
     }
-    public bool IMRedAttackActionDown()
+
+    public bool ImpulseActionDown()
     {
-        return myActionsManager.Gameplay.RedAttack.WasPressedThisFrame();
+        return myActionsManager.GameplayInputs.Impulse.WasPressedThisFrame();
     }
-    public bool IMRedAttackActionUp()
+    public bool ImpulseActionUp()
     {
-        return myActionsManager.Gameplay.RedAttack.WasReleasedThisFrame();
+        return myActionsManager.GameplayInputs.Impulse.WasReleasedThisFrame();
     }
-    */
+
+    public bool LeftRotationPressed()
+    {
+        return myActionsManager.GameplayInputs.LeftRotation.IsPressed();
+    }
+
+    public bool RightRotationPressed()
+    {
+        return myActionsManager.GameplayInputs.RightRotation.IsPressed();
+    }
+
+
     public bool isAnyKeyDown()
     {
         return Input.anyKeyDown;
