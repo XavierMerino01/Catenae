@@ -7,7 +7,7 @@ public class StartScreenControl : MonoBehaviour
 {
     void Update()
     {
-        if (InputManager.instance.isAnyKeyDown())
+        if (Input.anyKeyDown)
         {
             LoadNextScene();
         }

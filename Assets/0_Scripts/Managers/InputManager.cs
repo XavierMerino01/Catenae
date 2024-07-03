@@ -12,6 +12,15 @@ public class InputManager : MonoBehaviour
     public static InputManager instance = null;
     GameControls myActionsManager;
 
+    public enum Controllers
+    {
+        Keyboard,
+        Xbox,
+        PlayStation,
+        Switch
+    }
+    public Controllers chosenController;
+
     void Awake()
     {
         if (instance != null)
@@ -57,6 +66,7 @@ public class InputManager : MonoBehaviour
         if (Gamepad.all.Count == 0) 
         {
             Debug.Log("Keyboard");
+            SetChosenController(Controllers.Keyboard);
         }
         else
         {
@@ -78,14 +88,17 @@ public class InputManager : MonoBehaviour
                     {
                         case XInputController:
                             Debug.Log("Xbox connected");
+                            SetChosenController(Controllers.Xbox);
                             break;
 
                         case DualShockGamepad:
                             Debug.Log("PS connected");
+                            SetChosenController(Controllers.PlayStation);
                             break;
 
                         case SwitchProControllerHID:
                             Debug.Log("Switch connected");
+                            SetChosenController(Controllers.Switch);
                             break;
                     }
                     
@@ -93,8 +106,20 @@ public class InputManager : MonoBehaviour
                 break;
             case InputDeviceChange.Removed:
                 //Debug.Log("Device removed: " + device);
+                SetChosenController(Controllers.Keyboard);
                 break;
         }
+    }
+
+    public void SetChosenController(Controllers newController)
+    {
+        chosenController = newController;
+        GameManager.instance.myGamepadManager.SetGamepadVisuals(chosenController);
+    }
+
+    public Controllers GetChosenController()
+    {
+        return chosenController;
     }
 
 

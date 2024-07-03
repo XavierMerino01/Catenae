@@ -21,4 +21,17 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+
+
+
+
+    //Create and grab references on starting game levels
+
+    [HideInInspector] public GamepadManager myGamepadManager;
+
+    public void InitLevel()
+    {
+        myGamepadManager = FindObjectOfType<GamepadManager>();
+    }
 }
