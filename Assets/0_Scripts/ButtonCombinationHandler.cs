@@ -10,15 +10,17 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     public int buttonsPerCombination = 5;
 
     public GameObject buttonPrefab;
-    public Vector2 initialPosition;
+    public Vector2[] rowPositions;
     public float spacing = 1.5f;
 
-    private List<KeyCode> buttonCombination;
-    private List<GameObject> buttonObjects = new List<GameObject>();
+    private List<KeyCode> currentButtonCombination;
+    private List<GameObject>[] buttonCombinations;
+    private List<GameObject> currentButtonObjects = new List<GameObject>();
     private RandomButtonGenerator generator;
 
     private GameControls controls;
     private int currentButtonIndex = 0;
+    private int currentButtonRows = 0;
 
     public UnityEvent OnRowCleared;
     public UnityEvent OnRowFailed;
@@ -49,21 +51,44 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
             return;
         }
 
-        buttonCombination = generator.GenerateButtonCombination(buttonsPerCombination);
-        DisplayButtonCombination();
-        PrintButtonCombination();
+        buttonCombinations = new List<GameObject>[rowPositions.Length];
+
+        InvokeRepeating("CreateAndDisplayNewButtonRow", 0.0f, 5.0f);
     }
 
-    private void DisplayButtonCombination()
+
+    private void CreateAndDisplayNewButtonRow()
     {
-        for (int i = 0; i < buttonCombination.Count; i++)
+        List<KeyCode> newButtons = generator.GenerateButtonCombination(buttonsPerCombination);
+        buttonCombinations[currentButtonRows] = new List<GameObject>();
+        DisplayButtonCombination(newButtons);
+        PrintButtonCombination();
+    }
+    private void DisplayButtonCombination(List<KeyCode> ButtonsToDisplay)
+    {
+        for (int i = 0; i < ButtonsToDisplay.Count; i++)
         {
-            Vector2 position = new Vector2(initialPosition.x + i * spacing, initialPosition.y);
+            Vector2 position = new Vector2(rowPositions[currentButtonRows].x + i * spacing, rowPositions[currentButtonRows].y);
             GameObject button = Instantiate(buttonPrefab, position, Quaternion.identity);
             ButtonDisplay buttonDisplay = button.GetComponent<ButtonDisplay>();
-            buttonDisplay.SetButton(buttonCombination[i]);
-            buttonObjects.Add(button);
+            buttonDisplay.SetButton(ButtonsToDisplay[i]);
+            buttonCombinations[currentButtonRows].Add(button);
         }
+
+        if (currentButtonObjects.Count == 0)
+        {
+            AssignCurrentCombination();
+        }
+        currentButtonRows++;
+    }
+
+    private void AssignCurrentCombination()
+    {
+        foreach (GameObject button in buttonCombinations[0])
+        {
+            currentButtonObjects.Add(button);
+        }
+
     }
 
     public void HandleButtonPress(KeyCode key)
@@ -75,7 +100,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         //    return;
         //}
 
-        GameObject currentButton = buttonObjects[currentButtonIndex];
+        GameObject currentButton = currentButtonObjects[currentButtonIndex];
         ButtonDisplay buttonDisplay = currentButton.GetComponent<ButtonDisplay>();
 
         UnityEngine.Debug.Log(buttonDisplay.GetCurrentKey() + " " + key);
@@ -83,13 +108,17 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         if (buttonDisplay.GetCurrentKey() == key)
         {
             Destroy(currentButton);
-            buttonObjects.RemoveAt(currentButtonIndex);
+            currentButtonObjects.RemoveAt(currentButtonIndex);
 
-            currentButtonIndex++;
+            //currentButtonIndex++;
             //if (currentButtonIndex >= buttonObjects.Count)
             //{
             //    OnRowCleared?.Invoke();
             //}
+            if (currentButtonObjects.Count == 0) 
+            {
+                RowCleared();
+            }
         }
         else
         {
@@ -101,18 +130,51 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     {
         UnityEngine.Debug.Log("Rowcleared");
 
+        currentButtonRows--;
+        ReassignButtonCombinations();
+        if (currentButtonRows > 0)
+        {
+            MoveAllButtonsDown(2);
+        }
+        AssignCurrentCombination();
     }
 
     public void RowFailed()
     {
         UnityEngine.Debug.Log("RowFailed");
     }
+
+    private void ReassignButtonCombinations()
+    {
+        //Rearrange buttonCombinations array putting them one index value less (buttonComb[1] is now buttonComb[0])
+        for (int i = 1; i < buttonCombinations.Length; i++)
+        {
+            buttonCombinations[i - 1] = buttonCombinations[i];
+        }
+        //Neteja l'últim element
+        buttonCombinations[buttonCombinations.Length - 1] = new List<GameObject>();
+    }
+
+    private void MoveAllButtonsDown(float units)
+    {
+        foreach (var buttonList in buttonCombinations)
+        {
+            foreach (var button in buttonList)
+            {
+                Vector3 newPosition = button.transform.position;
+                newPosition.y -= units;
+                button.transform.position = newPosition;
+            }
+        }
+    }
+
+
     private void PrintButtonCombination()
     {
         string combination = "Combination: ";
-        for (int j = 0; j < buttonCombination.Count; j++)
+        for (int j = 0; j < currentButtonCombination.Count; j++)
         {
-            combination += buttonCombination[j] + " ";
+            combination += currentButtonCombination[j] + " ";
         }
         UnityEngine.Debug.Log(combination);
     }
