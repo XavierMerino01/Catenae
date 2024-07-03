@@ -123,6 +123,262 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Gameplay"",
+            ""id"": ""2683b331-7ceb-4637-b886-ac66c02e1538"",
+            ""actions"": [
+                {
+                    ""name"": ""ArrowUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""22959702-0e17-4482-9cf4-a2f5a2f12eff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArrowDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""3fb027d9-502a-423a-8cfc-6d129773a47c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArrowLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""a616a8f1-7c8c-4dd6-8b7c-9a9d3af5069a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArrowRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""f56a54c4-d79a-4c4a-b361-51484d5da5f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Square"",
+                    ""type"": ""Button"",
+                    ""id"": ""9710d52c-c590-4d09-84f4-f21704407ea3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Triangle"",
+                    ""type"": ""Button"",
+                    ""id"": ""5472a389-9547-4def-8a58-6f8b48706f6d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Circle"",
+                    ""type"": ""Button"",
+                    ""id"": ""defa8bd2-9fe1-470c-a9e7-b56bb2d8877a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cross"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b11990e-cf95-45e5-8f9a-e3419efd26b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ba06058f-5a8d-4349-88e2-af718c3ace43"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3283eb99-7d16-4de3-9900-7fb198bca75b"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""763d3827-36f4-4838-8c00-1744d84c262a"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ebf31994-dca4-44cc-a871-6e7d29b4b569"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d2ab2d9-006c-463c-a4a9-78aaacea9c98"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6a43f751-012d-46e5-a8e7-1ea3d0aa0e09"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90daf4dd-0352-43b5-9bc2-cdfa5f0832b3"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af6c4050-e183-4255-9c39-f7f4605486c2"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArrowRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6e84d0a9-8069-4cb1-a1eb-6b1a14590b9d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Square"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10d7164b-d31d-40c1-b536-70b27134918e"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Square"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc4c0157-4afb-4f7e-a424-b1697fe7bab0"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Triangle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8103882-7b74-488e-bdaf-4a0cdc345578"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Triangle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48ac3c0b-e982-4758-bc8c-3fef24d977f0"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Circle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f48abd2-905f-4b42-a2cf-b9a90f8d2f3e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Circle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7dada3e4-d9d8-4dca-a73e-27027ce2156a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cross"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74cbb044-3349-42e1-aaaa-d8ef62c249ac"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cross"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -132,6 +388,16 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_GameplayInputs_Impulse = m_GameplayInputs.FindAction("Impulse", throwIfNotFound: true);
         m_GameplayInputs_LeftRotation = m_GameplayInputs.FindAction("LeftRotation", throwIfNotFound: true);
         m_GameplayInputs_RightRotation = m_GameplayInputs.FindAction("RightRotation", throwIfNotFound: true);
+        // Gameplay
+        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
+        m_Gameplay_ArrowUp = m_Gameplay.FindAction("ArrowUp", throwIfNotFound: true);
+        m_Gameplay_ArrowDown = m_Gameplay.FindAction("ArrowDown", throwIfNotFound: true);
+        m_Gameplay_ArrowLeft = m_Gameplay.FindAction("ArrowLeft", throwIfNotFound: true);
+        m_Gameplay_ArrowRight = m_Gameplay.FindAction("ArrowRight", throwIfNotFound: true);
+        m_Gameplay_Square = m_Gameplay.FindAction("Square", throwIfNotFound: true);
+        m_Gameplay_Triangle = m_Gameplay.FindAction("Triangle", throwIfNotFound: true);
+        m_Gameplay_Circle = m_Gameplay.FindAction("Circle", throwIfNotFound: true);
+        m_Gameplay_Cross = m_Gameplay.FindAction("Cross", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,10 +517,123 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         }
     }
     public GameplayInputsActions @GameplayInputs => new GameplayInputsActions(this);
+
+    // Gameplay
+    private readonly InputActionMap m_Gameplay;
+    private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
+    private readonly InputAction m_Gameplay_ArrowUp;
+    private readonly InputAction m_Gameplay_ArrowDown;
+    private readonly InputAction m_Gameplay_ArrowLeft;
+    private readonly InputAction m_Gameplay_ArrowRight;
+    private readonly InputAction m_Gameplay_Square;
+    private readonly InputAction m_Gameplay_Triangle;
+    private readonly InputAction m_Gameplay_Circle;
+    private readonly InputAction m_Gameplay_Cross;
+    public struct GameplayActions
+    {
+        private @GameControls m_Wrapper;
+        public GameplayActions(@GameControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ArrowUp => m_Wrapper.m_Gameplay_ArrowUp;
+        public InputAction @ArrowDown => m_Wrapper.m_Gameplay_ArrowDown;
+        public InputAction @ArrowLeft => m_Wrapper.m_Gameplay_ArrowLeft;
+        public InputAction @ArrowRight => m_Wrapper.m_Gameplay_ArrowRight;
+        public InputAction @Square => m_Wrapper.m_Gameplay_Square;
+        public InputAction @Triangle => m_Wrapper.m_Gameplay_Triangle;
+        public InputAction @Circle => m_Wrapper.m_Gameplay_Circle;
+        public InputAction @Cross => m_Wrapper.m_Gameplay_Cross;
+        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
+        public void AddCallbacks(IGameplayActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
+            @ArrowUp.started += instance.OnArrowUp;
+            @ArrowUp.performed += instance.OnArrowUp;
+            @ArrowUp.canceled += instance.OnArrowUp;
+            @ArrowDown.started += instance.OnArrowDown;
+            @ArrowDown.performed += instance.OnArrowDown;
+            @ArrowDown.canceled += instance.OnArrowDown;
+            @ArrowLeft.started += instance.OnArrowLeft;
+            @ArrowLeft.performed += instance.OnArrowLeft;
+            @ArrowLeft.canceled += instance.OnArrowLeft;
+            @ArrowRight.started += instance.OnArrowRight;
+            @ArrowRight.performed += instance.OnArrowRight;
+            @ArrowRight.canceled += instance.OnArrowRight;
+            @Square.started += instance.OnSquare;
+            @Square.performed += instance.OnSquare;
+            @Square.canceled += instance.OnSquare;
+            @Triangle.started += instance.OnTriangle;
+            @Triangle.performed += instance.OnTriangle;
+            @Triangle.canceled += instance.OnTriangle;
+            @Circle.started += instance.OnCircle;
+            @Circle.performed += instance.OnCircle;
+            @Circle.canceled += instance.OnCircle;
+            @Cross.started += instance.OnCross;
+            @Cross.performed += instance.OnCross;
+            @Cross.canceled += instance.OnCross;
+        }
+
+        private void UnregisterCallbacks(IGameplayActions instance)
+        {
+            @ArrowUp.started -= instance.OnArrowUp;
+            @ArrowUp.performed -= instance.OnArrowUp;
+            @ArrowUp.canceled -= instance.OnArrowUp;
+            @ArrowDown.started -= instance.OnArrowDown;
+            @ArrowDown.performed -= instance.OnArrowDown;
+            @ArrowDown.canceled -= instance.OnArrowDown;
+            @ArrowLeft.started -= instance.OnArrowLeft;
+            @ArrowLeft.performed -= instance.OnArrowLeft;
+            @ArrowLeft.canceled -= instance.OnArrowLeft;
+            @ArrowRight.started -= instance.OnArrowRight;
+            @ArrowRight.performed -= instance.OnArrowRight;
+            @ArrowRight.canceled -= instance.OnArrowRight;
+            @Square.started -= instance.OnSquare;
+            @Square.performed -= instance.OnSquare;
+            @Square.canceled -= instance.OnSquare;
+            @Triangle.started -= instance.OnTriangle;
+            @Triangle.performed -= instance.OnTriangle;
+            @Triangle.canceled -= instance.OnTriangle;
+            @Circle.started -= instance.OnCircle;
+            @Circle.performed -= instance.OnCircle;
+            @Circle.canceled -= instance.OnCircle;
+            @Cross.started -= instance.OnCross;
+            @Cross.performed -= instance.OnCross;
+            @Cross.canceled -= instance.OnCross;
+        }
+
+        public void RemoveCallbacks(IGameplayActions instance)
+        {
+            if (m_Wrapper.m_GameplayActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IGameplayActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GameplayActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GameplayActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public GameplayActions @Gameplay => new GameplayActions(this);
     public interface IGameplayInputsActions
     {
         void OnImpulse(InputAction.CallbackContext context);
         void OnLeftRotation(InputAction.CallbackContext context);
         void OnRightRotation(InputAction.CallbackContext context);
+    }
+    public interface IGameplayActions
+    {
+        void OnArrowUp(InputAction.CallbackContext context);
+        void OnArrowDown(InputAction.CallbackContext context);
+        void OnArrowLeft(InputAction.CallbackContext context);
+        void OnArrowRight(InputAction.CallbackContext context);
+        void OnSquare(InputAction.CallbackContext context);
+        void OnTriangle(InputAction.CallbackContext context);
+        void OnCircle(InputAction.CallbackContext context);
+        void OnCross(InputAction.CallbackContext context);
     }
 }
