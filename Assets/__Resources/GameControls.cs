@@ -24,107 +24,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     ""name"": ""GameControls"",
     ""maps"": [
         {
-            ""name"": ""GameplayInputs"",
-            ""id"": ""92030f4d-27ae-4196-8710-6f1199c14345"",
-            ""actions"": [
-                {
-                    ""name"": ""Impulse"",
-                    ""type"": ""Button"",
-                    ""id"": ""ca8791d6-453a-4b3a-9819-2e4a8a573d02"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""LeftRotation"",
-                    ""type"": ""Button"",
-                    ""id"": ""18e62c37-63e6-4968-9bd3-18d2b1bf4c86"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""RightRotation"",
-                    ""type"": ""Button"",
-                    ""id"": ""fb840f58-1d51-46b0-93ab-a08bbc293ff7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""518489d3-a6d6-496a-a887-0d7724fb0977"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Impulse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""52d87433-b77a-4b99-9609-5cd7d98a4732"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Impulse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0143487c-79b4-4983-b0d5-85ac0acce3f9"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftRotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""87c6b98d-e240-442a-beec-dacddd5bef93"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftRotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5f78e2d0-3c3e-4a36-841c-c4fe7f3c809a"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightRotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""94c1aa92-ae9a-4041-913c-e3771fb9121b"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightRotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""Gameplay"",
             ""id"": ""2683b331-7ceb-4637-b886-ac66c02e1538"",
             ""actions"": [
@@ -348,7 +247,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2f48abd2-905f-4b42-a2cf-b9a90f8d2f3e"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -383,11 +282,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // GameplayInputs
-        m_GameplayInputs = asset.FindActionMap("GameplayInputs", throwIfNotFound: true);
-        m_GameplayInputs_Impulse = m_GameplayInputs.FindAction("Impulse", throwIfNotFound: true);
-        m_GameplayInputs_LeftRotation = m_GameplayInputs.FindAction("LeftRotation", throwIfNotFound: true);
-        m_GameplayInputs_RightRotation = m_GameplayInputs.FindAction("RightRotation", throwIfNotFound: true);
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_ArrowUp = m_Gameplay.FindAction("ArrowUp", throwIfNotFound: true);
@@ -455,68 +349,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
-
-    // GameplayInputs
-    private readonly InputActionMap m_GameplayInputs;
-    private List<IGameplayInputsActions> m_GameplayInputsActionsCallbackInterfaces = new List<IGameplayInputsActions>();
-    private readonly InputAction m_GameplayInputs_Impulse;
-    private readonly InputAction m_GameplayInputs_LeftRotation;
-    private readonly InputAction m_GameplayInputs_RightRotation;
-    public struct GameplayInputsActions
-    {
-        private @GameControls m_Wrapper;
-        public GameplayInputsActions(@GameControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Impulse => m_Wrapper.m_GameplayInputs_Impulse;
-        public InputAction @LeftRotation => m_Wrapper.m_GameplayInputs_LeftRotation;
-        public InputAction @RightRotation => m_Wrapper.m_GameplayInputs_RightRotation;
-        public InputActionMap Get() { return m_Wrapper.m_GameplayInputs; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GameplayInputsActions set) { return set.Get(); }
-        public void AddCallbacks(IGameplayInputsActions instance)
-        {
-            if (instance == null || m_Wrapper.m_GameplayInputsActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_GameplayInputsActionsCallbackInterfaces.Add(instance);
-            @Impulse.started += instance.OnImpulse;
-            @Impulse.performed += instance.OnImpulse;
-            @Impulse.canceled += instance.OnImpulse;
-            @LeftRotation.started += instance.OnLeftRotation;
-            @LeftRotation.performed += instance.OnLeftRotation;
-            @LeftRotation.canceled += instance.OnLeftRotation;
-            @RightRotation.started += instance.OnRightRotation;
-            @RightRotation.performed += instance.OnRightRotation;
-            @RightRotation.canceled += instance.OnRightRotation;
-        }
-
-        private void UnregisterCallbacks(IGameplayInputsActions instance)
-        {
-            @Impulse.started -= instance.OnImpulse;
-            @Impulse.performed -= instance.OnImpulse;
-            @Impulse.canceled -= instance.OnImpulse;
-            @LeftRotation.started -= instance.OnLeftRotation;
-            @LeftRotation.performed -= instance.OnLeftRotation;
-            @LeftRotation.canceled -= instance.OnLeftRotation;
-            @RightRotation.started -= instance.OnRightRotation;
-            @RightRotation.performed -= instance.OnRightRotation;
-            @RightRotation.canceled -= instance.OnRightRotation;
-        }
-
-        public void RemoveCallbacks(IGameplayInputsActions instance)
-        {
-            if (m_Wrapper.m_GameplayInputsActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IGameplayInputsActions instance)
-        {
-            foreach (var item in m_Wrapper.m_GameplayInputsActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_GameplayInputsActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public GameplayInputsActions @GameplayInputs => new GameplayInputsActions(this);
 
     // Gameplay
     private readonly InputActionMap m_Gameplay;
@@ -619,12 +451,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
-    public interface IGameplayInputsActions
-    {
-        void OnImpulse(InputAction.CallbackContext context);
-        void OnLeftRotation(InputAction.CallbackContext context);
-        void OnRightRotation(InputAction.CallbackContext context);
-    }
     public interface IGameplayActions
     {
         void OnArrowUp(InputAction.CallbackContext context);

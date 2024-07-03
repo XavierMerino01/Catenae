@@ -171,29 +171,29 @@ public class InputManager : MonoBehaviour
 
     #region old_inputs
 
-    public bool ImpulseActionPressed()
-    {
-        return myActionsManager.GameplayInputs.Impulse.IsPressed();
-    }
+    //public bool ImpulseActionPressed()
+    //{
+    //    return myActionsManager.GameplayInputs.Impulse.IsPressed();
+    //}
 
-    public bool ImpulseActionDown()
-    {
-        return myActionsManager.GameplayInputs.Impulse.WasPressedThisFrame();
-    }
-    public bool ImpulseActionUp()
-    {
-        return myActionsManager.GameplayInputs.Impulse.WasReleasedThisFrame();
-    }
+    //public bool ImpulseActionDown()
+    //{
+    //    return myActionsManager.GameplayInputs.Impulse.WasPressedThisFrame();
+    //}
+    //public bool ImpulseActionUp()
+    //{
+    //    return myActionsManager.GameplayInputs.Impulse.WasReleasedThisFrame();
+    //}
 
-    public bool LeftRotationPressed()
-    {
-        return myActionsManager.GameplayInputs.LeftRotation.IsPressed();
-    }
+    //public bool LeftRotationPressed()
+    //{
+    //    return myActionsManager.GameplayInputs.LeftRotation.IsPressed();
+    //}
 
-    public bool RightRotationPressed()
-    {
-        return myActionsManager.GameplayInputs.RightRotation.IsPressed();
-    }
+    //public bool RightRotationPressed()
+    //{
+    //    return myActionsManager.GameplayInputs.RightRotation.IsPressed();
+    //}
 
     #endregion
 
