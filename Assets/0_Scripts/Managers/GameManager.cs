@@ -23,18 +23,26 @@ public class GameManager : MonoBehaviour
     }
 
 
-
-
-
     //Create and grab references on starting game levels
 
     [HideInInspector] public GamepadManager myGamepadManager;
     [HideInInspector] public UIManager myUIManager;
+    [HideInInspector] public ButtonCombinationHandler myButtonHandler;
 
     public void InitLevel()
     {
         myGamepadManager = FindObjectOfType<GamepadManager>();
         myUIManager = FindObjectOfType<UIManager>();
+        myButtonHandler = FindObjectOfType<ButtonCombinationHandler>();
     }
 
+    public void GameOver()
+    {
+
+    }
+
+    public void LevelComplete()
+    {
+        myButtonHandler.StopButtonGeneration();
+    }
 }

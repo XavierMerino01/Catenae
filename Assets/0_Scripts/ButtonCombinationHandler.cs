@@ -9,7 +9,11 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     public int numberOfCombinations = 4;
     public float buttonSpawnRate = 4;
 
+    private bool isGeneratingButtons = false;
+    private Coroutine buttonGenerationCoroutine;
+
     public GameObject buttonPrefab;
+    public GameObject spamButton;
     public Vector2[] rowPositions;
     public float spacing = 1.5f;
 
@@ -20,6 +24,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     private GameControls controls;
     private int currentButtonCount = 0;
     private int currentButtonRows = 0;
+    private bool isSpamingButton;
 
     void Awake()
     {
@@ -42,27 +47,42 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         generator = GetComponent<RandomButtonGenerator>();
 
         buttonCombinations = new List<KeyCode>[buttonsPerCombination, numberOfCombinations];
+        spamButton.GetComponent<ButtonDisplay>().SetButton(KeyCode.W);
+        spamButton.SetActive(false);
 
         //TREURE
         StartButtonGeneration();
     }
 
+    #region Start/Stop generating buttons
     public void StartButtonGeneration()
     {
-        StartCoroutine(ButtonGenerationLoop());
+        if (!isGeneratingButtons)
+        {
+            isGeneratingButtons = true;
+            buttonGenerationCoroutine = StartCoroutine(ButtonGenerationLoop());
+        }
     }
 
     private IEnumerator ButtonGenerationLoop()
     {
-        CreateNewButtonRow();
-        yield return new WaitForSeconds(buttonSpawnRate);
-        StartCoroutine(ButtonGenerationLoop());
+        while (isGeneratingButtons)
+        {
+            CreateNewButtonRow();
+            yield return new WaitForSeconds(buttonSpawnRate);
+        }
     }
 
     public void StopButtonGeneration()
     {
-        StopCoroutine(ButtonGenerationLoop());
+        isGeneratingButtons = false;
+        if (buttonGenerationCoroutine != null)
+        {
+            StopCoroutine(buttonGenerationCoroutine);
+            buttonGenerationCoroutine = null;
+        }
     }
+    #endregion
 
     #region ButtonGeneration and Display
     private void CreateNewButtonRow()
@@ -98,7 +118,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         {
             Debug.Log("GAME OVER");
             StopButtonGeneration();
-            ClearLines(5);
+            ClearLines(true);
             //TO DO: Game Over
         }
     }
@@ -143,9 +163,19 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         //}
 
         GameObject currentButton = currentButtonObjects[0];
-        ButtonDisplay buttonDisplay = currentButton.GetComponent<ButtonDisplay>();
+        KeyCode targetButtonKey = currentButton.GetComponent<ButtonDisplay>().GetCurrentKey();
 
-        if (buttonDisplay.GetCurrentKey() == key)
+        if (isSpamingButton)
+        {
+
+            if (targetButtonKey == key) 
+            {
+                GameManager.instance.myUIManager.UpdateSpamProgress(1);
+            }
+            return;
+        }
+
+        if (targetButtonKey == key)
         {
             currentButtonCount++;
             Destroy(currentButton);
@@ -188,7 +218,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     public void RowFailed()
     {
         Debug.Log("Row failed");
-        ClearLines(1);
+        ClearLines(false);
         MoveAllButtonsDown();
         ReassignButtonCombinations();
         currentButtonRows--;
@@ -197,11 +227,24 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         CreateNewButtonRow();
     }
 
-    private void ClearLines(int LinesToClear)
+    private void ClearLines(bool clearAllLines)
     {
-        int buttonsToClear = LinesToClear * buttonsPerCombination;
+        if (currentButtonObjects.Count == 0) return;
 
-        for (int i = 0; i < buttonsToClear - currentButtonCount; i++)
+        int buttonsToClear;
+
+        if (clearAllLines)
+        {
+            buttonsToClear = currentButtonObjects.Count;
+            currentButtonRows = 0;
+        }
+        else
+        {
+            buttonsToClear = buttonsPerCombination - currentButtonCount;
+        }
+        
+
+        for (int i = 0; i < buttonsToClear; i++)
         {
             Destroy(currentButtonObjects[0]);
             currentButtonObjects.RemoveAt(0);
@@ -223,6 +266,27 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         {
             buttonCombinations[col, numberOfCombinations - 1] = null;
         }
+    }
+
+    public void EndCurrentLevel()
+    {
+        ClearLines(true);
+        StopButtonGeneration();
+        ActivateButtonSpam();
+    }
+
+    private void ActivateButtonSpam()
+    {
+        spamButton.SetActive(true);
+        currentButtonObjects.Add(spamButton);
+        isSpamingButton = true;
+    }
+
+    private void DeactivateButtonSpam()
+    {
+        spamButton.SetActive(false);
+        currentButtonObjects.RemoveAt(0);
+        isSpamingButton = false;
     }
 
     #region ButtonPresses

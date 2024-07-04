@@ -7,7 +7,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Image fadePanelImage;
+    [SerializeField] private Image spamButtonProgress;
     [SerializeField] private Slider timerBar;
+    [SerializeField] private float levelDuration;
+    [SerializeField] private Animator transitionMask;
+
+    public float fillSpeed; 
+    private Coroutine fillCoroutine;
 
     private void Start()
     {
@@ -20,14 +26,9 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void StartFade(float targetAlpha, float duration)
-    {
-        StartCoroutine(Fade(targetAlpha, duration));
-    }
-
     public void StartTimer()
     {
-        StartCoroutine(TimerCoroutine(60f)); // 60 seconds for one minute
+        StartCoroutine(TimerCoroutine(levelDuration)); // 60 seconds for one minute
     }
 
     private IEnumerator TimerCoroutine(float duration)
@@ -40,11 +41,42 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         timerBar.value = 1f; // Ensure the bar is full at the end
+        Debug.Log("Timer ended");
+        GameManager.instance.myButtonHandler.EndCurrentLevel();
     }
 
-    public void UpdateTimer()
+    public void UpdateSpamProgress(float newProgress)
     {
-        
+        if (fillCoroutine != null)
+        {
+            StopCoroutine(fillCoroutine);
+        }
+        fillCoroutine = StartCoroutine(SmoothFill(spamButtonProgress.fillAmount, spamButtonProgress.fillAmount + newProgress / 20));
+    }
+
+    private IEnumerator SmoothFill(float startValue, float endValue)
+    {
+        float elapsed = 0f;
+        float duration = Mathf.Abs(endValue - startValue) / fillSpeed; // Calculate the duration based on fillSpeed
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            spamButtonProgress.fillAmount = Mathf.Lerp(startValue, endValue, elapsed / duration);
+            yield return null;
+        }
+
+        // Ensure the final value is set
+        spamButtonProgress.fillAmount = endValue;
+        if (spamButtonProgress.fillAmount >= 1)
+        {
+            transitionMask.Play("MaskPlay");
+        }
+    }
+
+    public void StartFade(float targetAlpha, float duration)
+    {
+        StartCoroutine(Fade(targetAlpha, duration));
     }
 
     #region Fade In and Out method

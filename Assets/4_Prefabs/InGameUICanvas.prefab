@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 4216671113569501249}
   - component: {fileID: 4129351834394880029}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: TimeBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
