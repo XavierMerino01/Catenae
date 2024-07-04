@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Image fadePanelImage;
-    [SerializeField] private Image timerBar;
+    [SerializeField] private Slider timerBar;
 
     private void Start()
     {
@@ -36,10 +36,10 @@ public class UIManager : MonoBehaviour
         while (Time.time < startTime + duration)
         {
             float elapsed = Time.time - startTime;
-            timerBar.fillAmount = elapsed / duration;
+            timerBar.value = elapsed / duration;
             yield return null;
         }
-        timerBar.fillAmount = 1f; // Ensure the bar is full at the end
+        timerBar.value = 1f; // Ensure the bar is full at the end
     }
 
     public void UpdateTimer()
