@@ -417,7 +417,7 @@ MonoBehaviour:
   - {fileID: 673988844}
   creditsScreen: {fileID: 478892350}
   optionsScreen: {fileID: 2051152561}
-  moveSpeed: 1
+  moveSpeed: 2
 --- !u!114 &102169118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +554,8 @@ GameObject:
   - component: {fileID: 242442896}
   - component: {fileID: 242442895}
   - component: {fileID: 242442894}
+  - component: {fileID: 242442897}
+  - component: {fileID: 242442898}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -635,6 +637,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &242442897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242442893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: fd31624ad858878468605e99157417c5, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!114 &242442898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242442893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 242442896}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &254329403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,44 +1187,212 @@ MonoBehaviour:
   sounds:
   - name: Menu
     clip: {fileID: 8300000, guid: ced9918898e7ef449bfe8ef391bb2f36, type: 3}
-    volume: 0.507
+    volume: 0.19999999
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Prehistoria
     clip: {fileID: 8300000, guid: b76186c28817bdb449840e678b8a2d67, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Egipto
     clip: {fileID: 8300000, guid: b6b0e32d31f58f74580f19ebf74437e9, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Roma
     clip: {fileID: 8300000, guid: cb8e5aa58b456454999d53765e8ed63e, type: 3}
-    volume: 0.459
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Templarios
     clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Renacentismo
     clip: {fileID: 8300000, guid: 68274ba5118944c47938b692e424624c, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Actualiada
     clip: {fileID: 8300000, guid: 5bce81530c7eea042b7a40dccfdc0e0d, type: 3}
-    volume: 0
-    pitch: 0
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Acierto
+    clip: {fileID: 8300000, guid: 108e0fc03a299bf44988b43eb44e9ae1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Error
+    clip: {fileID: 8300000, guid: c6275727d6a957c4c878da9cf456ead0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Linea1
+    clip: {fileID: 8300000, guid: a29df73b54d32bd409709316755c0a11, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Linea2
+    clip: {fileID: 8300000, guid: 523e14d65b8a4224ab7dcdee35ad61ee, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Linea3
+    clip: {fileID: 8300000, guid: 31eda510957f2e741bbc498f2097957f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Linea4
+    clip: {fileID: 8300000, guid: 946f27a68eacbb1469275896aac6891a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EstirarCuerda1
+    clip: {fileID: 8300000, guid: 59cd009768f8bd34b94435772cbad180, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EstirarCuerda2
+    clip: {fileID: 8300000, guid: 2e17a783e5cdd7d49950caf7fc71c22a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EstirarCuerda3
+    clip: {fileID: 8300000, guid: 1220bfb76978dd644a2684116b6b9217, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Exclamacion1
+    clip: {fileID: 8300000, guid: 271badf7d64431e45891105b931f804f, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Exclamacion2
+    clip: {fileID: 8300000, guid: 93e2a380ad19b884cb6535f83bc1a51b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Exclamacion3
+    clip: {fileID: 8300000, guid: f969f47d10ad195469b3f0cc4b1205ae, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TirarCuerda1
+    clip: {fileID: 8300000, guid: 6bc9c47da5e3de044ada083bf194b805, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TirarCuerda2
+    clip: {fileID: 8300000, guid: dc0ade63e9639a64b96848d9fe5a9b31, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TirarCuerda3
+    clip: {fileID: 8300000, guid: 8e7a489f016fd6a4a92777974c78e073, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TirarCuerda4
+    clip: {fileID: 8300000, guid: b8bfbb3abb8dd8e478fd108a28540321, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TirarCuerda5
+    clip: {fileID: 8300000, guid: c875e475220305f4bbaad3c4eea53c1a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TirarCuerda6
+    clip: {fileID: 8300000, guid: c8981e2349733d34cbfe549f410547ca, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dialogo2
+    clip: {fileID: 8300000, guid: 14741f948e6ec0e40b9e83dc441fac0d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dialogo1
+    clip: {fileID: 8300000, guid: 47a7dc1bbebabeb4b994d3f8b2bcf3c4, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dialogo3
+    clip: {fileID: 8300000, guid: 82efc885776f09641b0ffd0a238bfe8e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PortalIn
+    clip: {fileID: 8300000, guid: 4842e786be9484c4f84be9dc3023ae1a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PortalOut
+    clip: {fileID: 8300000, guid: 0af19b0665c251a4ea6c5be914dab1d8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TeclaFinal
+    clip: {fileID: 8300000, guid: c3b18c8ea9d68f944b8908687350ed2a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Desplazamiento
+    clip: {fileID: 8300000, guid: 30ef40bfc51fa12409b5c42c0567ea01, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Comenzar
+    clip: {fileID: 8300000, guid: c9fdb044cc2eadf4599e5e808401df60, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: a948c8f174cc71b4f975318923d79310, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Atras
+    clip: {fileID: 8300000, guid: c93d72f8b666c4c428668ea70bb636bb, type: 3}
+    volume: 0.5
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!1 &395803478
@@ -3479,7 +3726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 1207080363}
   brightnessSlider: {fileID: 1452612333}
-  resolutionDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 937473438}
   fullscreenToggle: {fileID: 1614443615}
 --- !u!1 &1452612331
 GameObject:
@@ -3565,8 +3812,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 467364117}
   m_HandleRect: {fileID: 1519804846}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -2
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
