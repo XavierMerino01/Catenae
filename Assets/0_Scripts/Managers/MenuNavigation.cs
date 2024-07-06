@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class MenuNavigation : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class MenuNavigation : MonoBehaviour
     public float moveSpeed = 20f;
     private int currentIndex = 0;
     private bool canMove = true;
+    private bool canSelect = true;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class MenuNavigation : MonoBehaviour
     {
         if (canMove)
         {
+            FindObjectOfType<AudioManager>().Play("Desplazamiento");
             StartCoroutine(MoveMenu(Vector3.right));
         }
     }
@@ -37,58 +40,81 @@ public class MenuNavigation : MonoBehaviour
     {
         if (canMove)
         {
+            FindObjectOfType<AudioManager>().Play("Desplazamiento");
             StartCoroutine(MoveMenu(Vector3.left));
         }
     }
 
     public void SelectOption()
     {
-        int buttonInPosition2Index = (currentIndex + 2) % menuOptions.Length;
-
-        
-        switch (buttonInPosition2Index)
+        Debug.Log(canSelect);
+        if (canSelect)
         {
-            case 0:
-                Debug.Log("we¡ll see");
-                break;
-            case 1:
-                if (optionsScreen.activeSelf)
-                {
-                    optionsScreen.SetActive(false);
-                    canMove= true;
-                }
-                else
-                {
-                    optionsScreen.SetActive(true);
-                    canMove = false;
+            Debug.Log("SelectOption called");
+            canSelect = false;
+            StartCoroutine(CooldownSelectOption());
+            int buttonInPosition2Index = (currentIndex + 2) % menuOptions.Length;
+            
 
-                }
-                break;
-            case 2:
-                GameManager.instance.StartGame();
-                break;
-            case 3:
-                if (creditsScreen.activeSelf)
-                {
-                    creditsScreen.SetActive(false);
-                    canMove = true;
+            switch (buttonInPosition2Index)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("Click");
+                    Debug.Log("we¡ll see");
+                    break;
+                case 1:
+                    if (optionsScreen.activeSelf)
+                    {
+                        Debug.Log("DDD");
+                        FindObjectOfType<AudioManager>().Play("Atras");
+                        optionsScreen.SetActive(false);
+                        canMove = true;
+                    }
+                    else
+                    {
+                        Debug.Log("AAA");
+                        FindObjectOfType<AudioManager>().Play("Click");
+                        optionsScreen.SetActive(true);
+                        canMove = false;
 
-                }
-                else
-                {
-                    creditsScreen.SetActive(true);
-                    canMove = false;
+                    }
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("Comenzar");
+                    GameManager.instance.StartGame();
+                    break;
+                case 3:
+                    if (creditsScreen.activeSelf)
+                    {
 
-                }
+                        creditsScreen.SetActive(false);
+                        canMove = true;
+                        FindObjectOfType<AudioManager>().Play("Atras");
+                    }
+                    else
+                    {
+                        creditsScreen.SetActive(true);
+                        canMove = false;
+                        FindObjectOfType<AudioManager>().Play("Click");
+                    }
 
-                break;
-            case 4:
-                GameManager.instance.CloseGame();
-                break;
-           
+                    break;
+                case 4:
+                    GameManager.instance.CloseGame();
+
+                    break;
+
+            }
         }
-    }
+       
 
+    }
+    private IEnumerator CooldownSelectOption()
+    {
+        canSelect = false;
+        yield return new WaitForSeconds(0.25f); // Cooldown duration, adjust as needed
+        canSelect = true;
+    }
     private IEnumerator MoveMenu(Vector3 direction)
     {
         canMove = false;
