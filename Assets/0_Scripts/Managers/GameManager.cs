@@ -29,12 +29,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GamepadManager myGamepadManager;
     [HideInInspector] public UIManager myUIManager;
     [HideInInspector] public ButtonCombinationHandler myButtonHandler;
+    [HideInInspector] public AgesManager myAgeManager;
 
     public void InitLevel()
     {
         myGamepadManager = FindObjectOfType<GamepadManager>();
         myUIManager = FindObjectOfType<UIManager>();
         myButtonHandler = FindObjectOfType<ButtonCombinationHandler>();
+        myAgeManager = FindObjectOfType<AgesManager>();
     }
 
     public void StartGame()
@@ -55,5 +57,11 @@ public class GameManager : MonoBehaviour
     public void LevelComplete()
     {
         myButtonHandler.StopButtonGeneration();
+    }
+
+    public void OnLevelTransitionEnd()
+    {
+        myUIManager.SetMask(false);
+        myAgeManager.SwapMaskInteraction();
     }
 }

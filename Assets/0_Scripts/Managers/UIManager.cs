@@ -70,14 +70,13 @@ public class UIManager : MonoBehaviour
         spamButtonProgress.fillAmount = endValue;
         if (spamButtonProgress.fillAmount >= 1)
         {
-            transitionMask.Play("MaskStart");
-            Invoke("_reverseMask", 2.0f);
+            SetMask(true);
         }
     }
 
-    private void _reverseMask()
+    public void SetMask(bool maskMode)
     {
-        transitionMask.Play("MaskEnd");
+        transitionMask.gameObject.SetActive(maskMode);
     }
 
     public void StartFade(float targetAlpha, float duration)
