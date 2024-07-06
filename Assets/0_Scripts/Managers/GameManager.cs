@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,6 +35,16 @@ public class GameManager : MonoBehaviour
         myGamepadManager = FindObjectOfType<GamepadManager>();
         myUIManager = FindObjectOfType<UIManager>();
         myButtonHandler = FindObjectOfType<ButtonCombinationHandler>();
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 
     public void GameOver()
