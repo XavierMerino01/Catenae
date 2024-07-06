@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayActions
 {
-    public int buttonsPerCombination = 5;
+    public int buttonsPerCombination;
     public int numberOfCombinations = 4;
-    public float buttonSpawnRate = 4;
+    public float buttonSpawnRate;
 
-    private bool isGeneratingButtons = false;
+    public bool isGeneratingButtons = false;
     private Coroutine buttonGenerationCoroutine;
 
     public GameObject buttonPrefab;
@@ -24,7 +24,10 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     private GameControls controls;
     private int currentButtonCount = 0;
     private int currentButtonRows = 0;
+    private int buttonRowOffset = 2;
+
     private bool isSpamingButton;
+    private bool isLastLevel;
 
     void Awake()
     {
@@ -127,7 +130,8 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     {
         for (int i = 0; i < buttonsToDisplay.Count; i++)
         {
-            Vector2 position = new Vector2(rowPositions[currentButtonRows].x + i * spacing, rowPositions[currentButtonRows].y);
+            //Vector2 position = new Vector2(rowPositions[currentButtonRows].x + i * spacing, rowPositions[currentButtonRows].y);
+            Vector2 position = new Vector2(rowPositions[i + buttonRowOffset].x, rowPositions[currentButtonRows].y + spacing);
             GameObject button = Instantiate(buttonPrefab, position, Quaternion.identity);
             ButtonDisplay buttonDisplay = button.GetComponent<ButtonDisplay>();
             buttonDisplay.SetButton(buttonsToDisplay[i]);
@@ -135,32 +139,14 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         }
     }
 
-    //private void AssignCurrentCombination()
-    //{
-    //    currentButtonObjects.Clear();
-    //    for (int i = 0; i < buttonsPerCombination; i++)
-    //    {
-    //        if (buttonCombinations[i, 0] != null)
-    //        {
-    //            foreach (KeyCode keyCode in buttonCombinations[i, 0])
-    //            {
-    //                Vector2 position = new Vector2(rowPositions[0].x + i * spacing, rowPositions[0].y);
-    //                GameObject button = Instantiate(buttonPrefab, position, Quaternion.identity);
-    //                ButtonDisplay buttonDisplay = button.GetComponent<ButtonDisplay>();
-    //                buttonDisplay.SetButton(keyCode);
-    //                currentButtonObjects.Add(button);
-    //            }
-    //        }
-    //    }
-    //}
     #endregion
 
     public void HandleButtonPress(KeyCode key)
     {
-        //if (currentButtonIndex >= currentButtonObjects.Count)
-        //{
-        //    return;
-        //}
+        if (currentButtonObjects[0] == null)
+        {
+            return;
+        }
 
         GameObject currentButton = currentButtonObjects[0];
         KeyCode targetButtonKey = currentButton.GetComponent<ButtonDisplay>().GetCurrentKey();
@@ -197,20 +183,21 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     {
         Debug.Log("Row cleared");
 
+        GameManager.instance.myAgeManager.PlayRowAnimation();
         MoveAllButtonsDown();
         ReassignButtonCombinations();
         
         currentButtonRows--;
-        //AssignCurrentCombination();
     }
 
     private void MoveAllButtonsDown()
     {
         foreach (var buttonObject in currentButtonObjects)
         {
-            Vector3 position = buttonObject.transform.position;
-            position.y -= spacing; 
-            buttonObject.transform.position = position;
+            //Vector3 position = buttonObject.transform.position;
+            //position.y -= spacing; 
+            //buttonObject.transform.position = position;
+            buttonObject.GetComponent<ButtonDisplay>().MoveButton(spacing);
         }
     }
 
@@ -272,7 +259,16 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     {
         ClearLines(true);
         StopButtonGeneration();
-        ActivateButtonSpam();
+
+        if (isLastLevel)
+        {
+            Debug.Log("YOU WIN");
+        }
+        else
+        {
+            ActivateButtonSpam();
+        }
+        
     }
 
     private void ActivateButtonSpam()
@@ -282,11 +278,30 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         isSpamingButton = true;
     }
 
-    private void DeactivateButtonSpam()
+    public void DeactivateButtonSpam()
     {
         spamButton.SetActive(false);
         currentButtonObjects.RemoveAt(0);
         isSpamingButton = false;
+    }
+
+    public void SetButtonGenerationValues(int newButtonsPerComb, float newSpawnRate, bool lastLevel)
+    {
+        isLastLevel = lastLevel;
+        buttonsPerCombination = newButtonsPerComb;
+        buttonCombinations = new List<KeyCode>[buttonsPerCombination, numberOfCombinations];
+        buttonSpawnRate = newSpawnRate;
+
+        if (buttonsPerCombination == 5)
+        {
+            buttonRowOffset = 1;
+        }
+        else if (buttonsPerCombination == 6) 
+        {
+            buttonRowOffset = 0;
+        }
+
+        StartButtonGeneration();
     }
 
     #region ButtonPresses

@@ -9,15 +9,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image fadePanelImage;
     [SerializeField] private Image spamButtonProgress;
     [SerializeField] private Slider timerBar;
+    [SerializeField] private Image timerBarHandle;
+    private Image timerHandleFill;
     [SerializeField] private float levelDuration;
     [SerializeField] private Animator transitionMask;
 
-    public float fillSpeed; 
+    public float fillSpeed;
+    private float buttonSpawnRate = 4.5f; 
     private Coroutine fillCoroutine;
 
     private void Start()
     {
         GameManager.instance.InitLevel();
+
+        timerHandleFill = timerBarHandle.transform.GetChild(0).GetComponent<Image>();
+
         StartTimer();
 
         if (SceneManager.GetActiveScene().name != "StartScreen") return;
@@ -28,7 +34,8 @@ public class UIManager : MonoBehaviour
 
     public void StartTimer()
     {
-        StartCoroutine(TimerCoroutine(levelDuration)); // 60 seconds for one minute
+        StartCoroutine(TimerCoroutine(levelDuration));
+        StartCoroutine(NextLineTimer(buttonSpawnRate));// 60 seconds for one minute
     }
 
     private IEnumerator TimerCoroutine(float duration)
@@ -42,7 +49,21 @@ public class UIManager : MonoBehaviour
         }
         timerBar.value = 1f; // Ensure the bar is full at the end
         Debug.Log("Timer ended");
+        StopCoroutine(NextLineTimer(0));
         GameManager.instance.myButtonHandler.EndCurrentLevel();
+    }
+
+    private IEnumerator NextLineTimer(float spawnRate)
+    {
+        float startTime = Time.time;
+        while (Time.time < startTime + spawnRate)
+        {
+            float elapsed = Time.time - startTime;
+            timerHandleFill.fillAmount = elapsed / spawnRate;
+            yield return null;
+        }
+        timerHandleFill.fillAmount = 1f; // Ensure the bar is full at the end
+        StartCoroutine(NextLineTimer(buttonSpawnRate));
     }
 
     public void UpdateSpamProgress(float newProgress)
@@ -71,10 +92,22 @@ public class UIManager : MonoBehaviour
         if (spamButtonProgress.fillAmount >= 1)
         {
             SetMask(true);
+            GameManager.instance.myButtonHandler.DeactivateButtonSpam();
         }
     }
 
-    public void SetMask(bool maskMode)
+    public void SetNextLevelUI(float nextRoundDuration, float newSpawnRate, Sprite timerHandleSprite)
+    {
+        SetMask(false);
+        spamButtonProgress.fillAmount = 0;
+        levelDuration = nextRoundDuration;
+        timerBar.value = 0;
+        timerBarHandle.sprite = timerHandleSprite;
+        buttonSpawnRate = newSpawnRate;
+        StartTimer();
+    }
+
+    private void SetMask(bool maskMode)
     {
         transitionMask.gameObject.SetActive(maskMode);
     }

@@ -43,14 +43,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void LevelComplete()
-    {
-        myButtonHandler.StopButtonGeneration();
-    }
-
     public void OnLevelTransitionEnd()
     {
-        myUIManager.SetMask(false);
+        LevelData nextLevelData = myAgeManager.GetNextLevelData();
+        myUIManager.SetNextLevelUI(nextLevelData.levelDuration, nextLevelData.buttonSpawnRate, nextLevelData.timerHandleSprite);
+        myButtonHandler.SetButtonGenerationValues(nextLevelData.buttonsPerCombination, nextLevelData.buttonSpawnRate, nextLevelData.isLastAge);
         myAgeManager.SwapMaskInteraction();
     }
 }
