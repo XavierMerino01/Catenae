@@ -103,7 +103,5 @@ public class GameManager : MonoBehaviour
         myButtonHandler.SetButtonGenerationValues(nextLevelData.buttonsPerCombination, nextLevelData.buttonSpawnRate, nextLevelData.isLastAge);
         myUIManager.SetNextLevelUI(nextLevelData.levelDuration, nextLevelData.buttonSpawnRate, nextLevelData.timerHandleSprite);
         myAgeManager.SwapMaskInteraction();
-
-        FindObjectOfType<AudioManager>().Play("PortalOut");
     }
 }

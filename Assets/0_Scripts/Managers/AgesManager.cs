@@ -99,7 +99,10 @@ public class AgesManager : MonoBehaviour
             Ages[currentAgeIndex].ageSpritesParent.SetActive(true);
             AssignChildrenSprites();
         }
-
+        else
+        {
+            PopulateAnimators();
+        }
     }
 
     public LevelData GetNextLevelData()

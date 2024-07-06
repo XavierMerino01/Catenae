@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
         }
         timerBar.value = 1f; // Ensure the bar is full at the end
         Debug.Log("Timer ended");
+        FindObjectOfType<AudioManager>().PlayRandom("ProgresoCompleto", "ProgresoCompleto2");
         GameManager.instance.myButtonHandler.EndCurrentLevel();
     }
 
@@ -101,7 +102,7 @@ public class UIManager : MonoBehaviour
         if (spamButtonProgress.fillAmount >= 1)
         {
             GameManager.instance.ChangeAgeMusic();
-            FindObjectOfType<AudioManager>().Play("PortalIn");
+            FindObjectOfType<AudioManager>().Play("PortalDef");
             screenEffects.Shake(1f, 0.1f);
             SetMask(true);
             GameManager.instance.myButtonHandler.DeactivateButtonSpam();
