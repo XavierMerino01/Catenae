@@ -1092,6 +1092,7 @@ MonoBehaviour:
   myGamepadManager: {fileID: 0}
   myUIManager: {fileID: 0}
   myButtonHandler: {fileID: 0}
+  myAgeManager: {fileID: 0}
 --- !u!114 &381235673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3364,6 +3365,7 @@ GameObject:
   - component: {fileID: 1366731968}
   - component: {fileID: 1366731967}
   - component: {fileID: 1366731966}
+  - component: {fileID: 1366731970}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -3463,6 +3465,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1366731970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366731965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ed5135aae043f4c8b99123164187a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1207080363}
+  brightnessSlider: {fileID: 1452612333}
+  resolutionDropdown: {fileID: 0}
+  fullscreenToggle: {fileID: 1614443615}
 --- !u!1 &1452612331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3474,7 +3492,7 @@ GameObject:
   - component: {fileID: 1452612332}
   - component: {fileID: 1452612333}
   m_Layer: 5
-  m_Name: Brillo
+  m_Name: Brightness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
