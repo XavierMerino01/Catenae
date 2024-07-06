@@ -5,22 +5,22 @@ using UnityEngine;
 public class KeyShake : MonoBehaviour
 {
     private Transform spriteTransform;
-    private Vector3 originalPosition;
+    private Quaternion originalRotation;
     private Coroutine shakeCoroutine;
 
     private void Awake()
     {
         spriteTransform = transform;
-        originalPosition = spriteTransform.localPosition;
+        originalRotation = spriteTransform.localRotation;
     }
 
-    public void StartShake(float strength)
+    public void StartShake(float strength, float delay)
     {
         if (shakeCoroutine != null)
         {
             StopCoroutine(shakeCoroutine);
         }
-        shakeCoroutine = StartCoroutine(ShakeCoroutine(strength));
+        shakeCoroutine = StartCoroutine(ShakeCoroutine(strength, delay));
     }
 
     public void StopShake()
@@ -29,20 +29,19 @@ public class KeyShake : MonoBehaviour
         {
             StopCoroutine(shakeCoroutine);
             shakeCoroutine = null;
-            spriteTransform.localPosition = originalPosition;
+            spriteTransform.localRotation = originalRotation;
         }
     }
 
-    private IEnumerator ShakeCoroutine(float strength)
+    private IEnumerator ShakeCoroutine(float strength, float delay)
     {
         while (true)
         {
-            float x = Random.Range(-1f, 1f) * strength;
-            float y = Random.Range(-1f, 1f) * strength;
+            float angle = Random.Range(-1f, 1f) * strength;
 
-            spriteTransform.localPosition = new Vector3(originalPosition.x + x, originalPosition.y + y, originalPosition.z);
+            spriteTransform.localRotation = Quaternion.Euler(0, 0, angle);
 
-            yield return null;
+            yield return new WaitForSeconds(delay);
         }
     }
 }

@@ -31,7 +31,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     private bool inputEnabled = true;
     private bool isLastLevel;
 
-    
+    public ScreenShake screen;
 
     void Awake()
     {
@@ -76,7 +76,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
             yield return new WaitForSeconds(buttonSpawnRate);
             CreateNewButtonRow();
             GameManager.instance.myUIManager.NextLineUI();
-            UpdateShakeEffect();
+            
         }
     }
 
@@ -125,6 +125,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
             inputEnabled = false;
             GameManager.instance.GameOver(false);
         }
+       // UpdateShakeEffect();
 
     }
 
@@ -162,6 +163,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
             {
                 GameManager.instance.myUIManager.UpdateSpamProgress(1);
                 FindObjectOfType<AudioManager>().PlayAndChangePitch("TeclaFinal", 0.1f);
+                screen.Shake(0.1f, 0.05f);
             }
             return;
         }
@@ -198,6 +200,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         ReassignButtonCombinations();
         
         currentButtonRows--;
+        //UpdateShakeEffect();
     }
 
     private void MoveAllButtonsDown()
@@ -225,6 +228,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
 
         FindObjectOfType<AudioManager>().PlayRandom("Dialogo1", "Dialogo2", "Dialogo3");
         FindObjectOfType<AudioManager>().PlayRandom("Exclamacion1", "Exclamacion2", "Exclamacion3");
+        //UpdateShakeEffect();
     }
 
     private void ClearLines(bool clearAllLines)
@@ -317,26 +321,26 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     }
 
 
-    private void UpdateShakeEffect()
+    public void UpdateShakeEffect()
     {
         foreach (var buttonObject in currentButtonObjects)
         {
             var spriteShake = buttonObject.GetComponent<KeyShake>();
             if (currentButtonRows >= 6)
             {
-                spriteShake.StartShake(0.75f); // Stronger shake
+                spriteShake.StartShake(30f,0.05f); 
             }
             else if (currentButtonRows >= 5)
             {
-                spriteShake.StartShake(0.05f); // Medium shake
+                spriteShake.StartShake(20f,0.05f); 
             }
             else if (currentButtonRows >= 4)
             {
-                spriteShake.StartShake(0.025f); // Light shake
+                spriteShake.StartShake(10f,0.05f); 
             }
             else
             {
-                spriteShake.StopShake(); // Stop shaking
+                spriteShake.StopShake(); 
             }
         }
     }

@@ -102,5 +102,6 @@ public class ButtonDisplay : MonoBehaviour
 
         transform.position = endPosition;
         moveAnimCoroutine = null; // Reset the coroutine reference once the movement is complete
+        FindObjectOfType<ButtonCombinationHandler>().UpdateShakeEffect();
     }
 }
