@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public UIManager myUIManager;
     [HideInInspector] public ButtonCombinationHandler myButtonHandler;
     [HideInInspector] public AgesManager myAgeManager;
+    [HideInInspector] public TextAssigner myTextAssigner;
 
     public void InitLevel()
     {
@@ -37,11 +38,17 @@ public class GameManager : MonoBehaviour
         myUIManager = FindObjectOfType<UIManager>();
         myButtonHandler = FindObjectOfType<ButtonCombinationHandler>();
         myAgeManager = FindObjectOfType<AgesManager>();
+        myTextAssigner = FindObjectOfType<TextAssigner>();
     }
 
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void CloseGame()
@@ -53,11 +60,12 @@ public class GameManager : MonoBehaviour
     {
         if (win)
         {
-            myUIManager.StartFade(1, 2);
+            myTextAssigner.FinalTransition();
+            myUIManager.UIWin();
         }
         else
         {
-            myUIManager.StartFade(1, 2);
+            myUIManager.UIGameOver();
         }
         
     }
@@ -103,5 +111,26 @@ public class GameManager : MonoBehaviour
         myButtonHandler.SetButtonGenerationValues(nextLevelData.buttonsPerCombination, nextLevelData.buttonSpawnRate, nextLevelData.isLastAge);
         myUIManager.SetNextLevelUI(nextLevelData.levelDuration, nextLevelData.buttonSpawnRate, nextLevelData.timerHandleSprite);
         myAgeManager.SwapMaskInteraction();
+    }
+
+    public void RestartCurrentLevel()
+    {
+        ResetMusic();
+        myButtonHandler.RestartButtonLevel();
+    }
+
+    public void ResetMusic()
+    {
+
+        foreach (AudioSource source in gameObject.GetComponents(typeof(AudioSource)))
+        {
+            if (source.isPlaying)
+            {
+                source.Stop();
+            }
+        }
+        myAgeManager.currentAgeIndex--;
+        ChangeAgeMusic();
+        myAgeManager.currentAgeIndex++;
     }
 }

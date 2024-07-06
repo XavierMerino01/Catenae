@@ -1185,6 +1185,7 @@ MonoBehaviour:
   myUIManager: {fileID: 0}
   myButtonHandler: {fileID: 0}
   myAgeManager: {fileID: 0}
+  myTextAssigner: {fileID: 0}
 --- !u!114 &381235673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,7 +1224,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Templarios
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: d25b02b8c7ecb874a9cb6a6bb03edfc9, type: 3}
     volume: 0.11
     pitch: 1
     loop: 0
@@ -4161,7 +4162,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1551062994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 102169117}
+        m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
+        m_MethodName: SelectOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1551062994
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57a7292f4768fa41a33a6a0a59f0bfe, type: 3}
+  m_Name: Contemporary_text
+  m_EditorClassIdentifier: 
+  Texts:
+  - " \xBFPor qu\xE9 la vida no viene con manual de instrucciones?"
+  - Me han funado...
+  - "2% de bater\xEDa"
+  - ' La vida es breve como la Level UP Game Jam'
+  - "\xA1No somos m\xE1s que memes!"
+  - "Bruh\u2026"

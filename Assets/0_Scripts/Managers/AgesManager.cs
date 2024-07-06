@@ -37,7 +37,7 @@ public class AgeData
 public class AgesManager : MonoBehaviour
 {
     public AgeData[] Ages;
-    private int currentAgeIndex = 1;
+    public int currentAgeIndex = 1;
 
     private List<Animator> currentAgeAnimators = new List<Animator>();
     private string animationName;
@@ -113,5 +113,10 @@ public class AgesManager : MonoBehaviour
     public AgeData GetAgeData()
     {
         return Ages[currentAgeIndex];
+    }
+
+    public AgeData GetPreviousAgeData()
+    {
+        return Ages[currentAgeIndex - 1];
     }
 }

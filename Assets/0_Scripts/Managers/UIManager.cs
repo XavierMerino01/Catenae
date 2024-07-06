@@ -14,11 +14,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private float levelDuration;
     [SerializeField] private Animator transitionMask;
     [SerializeField] private GameObject transitionMaskFX;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject startArrow;
 
     public float fillSpeed;
     private float buttonSpawnRate = 4.5f; 
     private Coroutine fillCoroutine;
-    public GameObject errorTextObj;
+    private Coroutine errorTxtCoroutine;
+    public GameObject[] errorTextObj;
 
     public ScreenShake screenEffects;
 
@@ -30,10 +34,21 @@ public class UIManager : MonoBehaviour
 
         StartFade(0, 2);
         Invoke("StartTimer", 2);
+        Invoke("ActivateStartArrow", 6);
 
         FindObjectOfType<AudioManager>().Stop("Menu");
         FindObjectOfType<AudioManager>().Play("Prehistoria");
 
+    }
+
+    public void ActivateStartArrow()
+    {
+        startArrow.gameObject.SetActive(true);
+    }
+
+    public void DeactivateStartArrow()
+    {
+        startArrow.gameObject.SetActive(false);
     }
 
     public void StartTimer()
@@ -130,6 +145,73 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(Fade(targetAlpha, duration));
     }
+
+    public void ActivateErrorText(int missedButtonIndex)
+    {
+        if (errorTxtCoroutine == null)
+        {
+            errorTxtCoroutine = StartCoroutine(ErrorTextCoroutine(errorTextObj[missedButtonIndex], missedButtonIndex));
+        }
+        
+    }
+
+    private IEnumerator ErrorTextCoroutine(GameObject textToShow, int index)
+    {
+        textToShow.SetActive(true);
+        GameManager.instance.myTextAssigner.AssignRandomAgeText(index);
+        yield return new WaitForSeconds(3.0f);
+        textToShow.SetActive(false);
+        errorTxtCoroutine = null;
+    }
+
+    public void UIGameOver()
+    {
+        StartFade(1, 2);
+        Invoke("ActivateGameOverPanel", 2.0f);
+    }
+
+    public void UIWin()
+    {
+        StartFade(1, 2);
+        Invoke("ActivateWinPanel", 2.0f);
+    }
+
+    public void ActivateWinPanel()
+    {
+        winPanel.SetActive(true);
+    }
+
+    public void ActivateGameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
+    }
+
+    private void DeactivateGameOverPanel()
+    {
+        gameOverPanel.SetActive(false);
+    }
+
+    #region ButtonMethods
+    public void RestartLevel()
+    {
+        GameManager.instance.RestartCurrentLevel();
+        DeactivateGameOverPanel();
+        StopAllCoroutines();
+        StartFade(0, 2);
+        StartTimer();
+    }
+
+    public void ExitToMenu()
+    {
+        GameManager.instance.LoadMainMenu();
+    }
+
+    public void CloseGame()
+    {
+        GameManager.instance.CloseGame();
+    }
+
+    #endregion
 
     #region Fade In and Out method
 

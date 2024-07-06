@@ -184,6 +184,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         else
         {
             FindObjectOfType<AudioManager>().Play("Error");
+            GameManager.instance.myUIManager.ActivateErrorText(currentButtonCount + buttonRowOffset);
             RowFailed();
         }
     }
@@ -195,6 +196,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         FindObjectOfType<AudioManager>().PlayRandom("EstirarCuerda1", "EstirarCuerda2", "EstirarCuerda3");
         FindObjectOfType<AudioManager>().PlayRandom("TirarCuerda1", "TirarCuerda2", "TirarCuerda3", "TirarCuerda4", "TirarCuerda5", "TirarCuerda6");
 
+        GameManager.instance.myUIManager.DeactivateStartArrow();
         GameManager.instance.myAgeManager.PlayRowAnimation();
         MoveAllButtonsDown();
         ReassignButtonCombinations();
@@ -318,6 +320,13 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         {
             buttonRowOffset = 0;
         }
+    }
+
+    public void RestartButtonLevel()
+    {
+        ClearLines(true);
+        StartButtonGeneration();
+        inputEnabled = true;
     }
 
 
