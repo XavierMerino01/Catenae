@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     private Coroutine fillCoroutine;
     public GameObject errorTextObj;
 
+    public ScreenShake screenEffects;
+
     private void Start()
     {
         GameManager.instance.InitLevel();
@@ -100,6 +102,7 @@ public class UIManager : MonoBehaviour
         {
             GameManager.instance.ChangeAgeMusic();
             FindObjectOfType<AudioManager>().Play("PortalIn");
+            screenEffects.Shake(1f, 0.1f);
             SetMask(true);
             GameManager.instance.myButtonHandler.DeactivateButtonSpam();
         }

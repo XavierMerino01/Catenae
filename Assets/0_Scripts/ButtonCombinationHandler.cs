@@ -31,6 +31,8 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     private bool inputEnabled = true;
     private bool isLastLevel;
 
+    
+
     void Awake()
     {
         controls = new GameControls();
@@ -50,6 +52,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     void Start()
     {
         generator = GetComponent<RandomButtonGenerator>();
+       
 
         buttonCombinations = new List<KeyCode>[buttonsPerCombination, numberOfCombinations];
         spamButton.GetComponent<ButtonDisplay>().SetButton(KeyCode.W);
@@ -73,6 +76,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
             yield return new WaitForSeconds(buttonSpawnRate);
             CreateNewButtonRow();
             GameManager.instance.myUIManager.NextLineUI();
+            UpdateShakeEffect();
         }
     }
 
@@ -309,6 +313,31 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         else if (buttonsPerCombination == 6) 
         {
             buttonRowOffset = 0;
+        }
+    }
+
+
+    private void UpdateShakeEffect()
+    {
+        foreach (var buttonObject in currentButtonObjects)
+        {
+            var spriteShake = buttonObject.GetComponent<KeyShake>();
+            if (currentButtonRows >= 6)
+            {
+                spriteShake.StartShake(0.75f); // Stronger shake
+            }
+            else if (currentButtonRows >= 5)
+            {
+                spriteShake.StartShake(0.05f); // Medium shake
+            }
+            else if (currentButtonRows >= 4)
+            {
+                spriteShake.StartShake(0.025f); // Light shake
+            }
+            else
+            {
+                spriteShake.StopShake(); // Stop shaking
+            }
         }
     }
 
