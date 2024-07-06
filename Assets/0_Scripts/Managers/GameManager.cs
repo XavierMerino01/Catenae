@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     //Create and grab references on starting game levels
 
-    [HideInInspector] public GamepadManager myGamepadManager;
     [HideInInspector] public UIManager myUIManager;
     [HideInInspector] public ButtonCombinationHandler myButtonHandler;
     [HideInInspector] public AgesManager myAgeManager;
@@ -34,7 +33,6 @@ public class GameManager : MonoBehaviour
 
     public void InitLevel()
     {
-        myGamepadManager = FindObjectOfType<GamepadManager>();
         myUIManager = FindObjectOfType<UIManager>();
         myButtonHandler = FindObjectOfType<ButtonCombinationHandler>();
         myAgeManager = FindObjectOfType<AgesManager>();
@@ -132,5 +130,28 @@ public class GameManager : MonoBehaviour
         myAgeManager.currentAgeIndex--;
         ChangeAgeMusic();
         myAgeManager.currentAgeIndex++;
+    }
+
+    public void ChangeButtonSprites(InputManager.Controllers newController)
+    {
+        ButtonDisplay[] buttons = (ButtonDisplay[])Object.FindObjectsOfType(typeof(ButtonDisplay));
+
+        switch (newController)
+        {
+            case InputManager.Controllers.Xbox:
+                foreach (ButtonDisplay button in buttons)
+                {
+                    button.AssignXboxKeys();
+                }
+                break;
+            case InputManager.Controllers.Keyboard:
+                foreach (ButtonDisplay button in buttons)
+                {
+                    button.AssignPcKeys();
+                }
+                break;
+
+
+        }
     }
 }

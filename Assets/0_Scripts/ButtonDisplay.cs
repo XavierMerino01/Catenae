@@ -13,6 +13,11 @@ public class ButtonDisplay : MonoBehaviour
     public Sprite leftArrowSprite;
     public Sprite rightArrowSprite;
 
+    public Sprite[] usedSprites;
+
+    public Sprite[] keySprites;
+    public Sprite[] xboxSprites;
+
     private SpriteRenderer spriteRenderer;
     private KeyCode currentKey;
 
@@ -36,30 +41,48 @@ public class ButtonDisplay : MonoBehaviour
         switch (key)
         {
             case KeyCode.W:
-                spriteRenderer.sprite = wSprite;
+                spriteRenderer.sprite = usedSprites[0];
                 break;
             case KeyCode.A:
-                spriteRenderer.sprite = aSprite;
+                spriteRenderer.sprite = usedSprites[1];
                 break;
             case KeyCode.S:
-                spriteRenderer.sprite = sSprite;
+                spriteRenderer.sprite = usedSprites[2];
                 break;
             case KeyCode.D:
-                spriteRenderer.sprite = dSprite;
+                spriteRenderer.sprite = usedSprites[3];
                 break;
             case KeyCode.UpArrow:
-                spriteRenderer.sprite = upArrowSprite;
+                spriteRenderer.sprite = usedSprites[4];
                 break;
             case KeyCode.DownArrow:
-                spriteRenderer.sprite = downArrowSprite;
+                spriteRenderer.sprite = usedSprites[5];
                 break;
             case KeyCode.LeftArrow:
-                spriteRenderer.sprite = leftArrowSprite;
+                spriteRenderer.sprite = usedSprites[6];
                 break;
             case KeyCode.RightArrow:
-                spriteRenderer.sprite = rightArrowSprite;
+                spriteRenderer.sprite = usedSprites[7];
                 break;
         }
+    }
+
+    public void AssignPcKeys()
+    {
+        for (int i = 0; i < usedSprites.Length; i++)
+        {
+            usedSprites[i] = keySprites[i];
+        }
+        SetButton(currentKey);
+    }
+
+    public void AssignXboxKeys()
+    {
+        for (int i = 0; i < usedSprites.Length; i++)
+        {
+            usedSprites[i] = xboxSprites[i];
+        }
+        SetButton(currentKey);
     }
 
     public KeyCode GetCurrentKey()

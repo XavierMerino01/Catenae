@@ -106,6 +106,33 @@ MonoBehaviour:
   downArrowSprite: {fileID: -414253390, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
   leftArrowSprite: {fileID: 1088811902, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
   rightArrowSprite: {fileID: -712262890, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  usedSprites:
+  - {fileID: -62686843, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 110831424, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 408867069, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: -2003728104, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 322456635, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: -414253390, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 1088811902, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: -712262890, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  keySprites:
+  - {fileID: -62686843, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 110831424, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 408867069, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: -2003728104, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 322456635, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: -414253390, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: 1088811902, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  - {fileID: -712262890, guid: 24ca7c6004559a04397d589f0682a6fa, type: 3}
+  xboxSprites:
+  - {fileID: 1732769827, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
+  - {fileID: -563883694, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
+  - {fileID: -1479461822, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
+  - {fileID: 603183944, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
+  - {fileID: -1357206537, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
+  - {fileID: -1451605447, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
+  - {fileID: 63006592, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
+  - {fileID: -703469454, guid: 0316e8236c0f4014aa89c41db142b4ac, type: 3}
 --- !u!114 &-1079826365932711657
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -114,7 +114,7 @@ public class InputManager : MonoBehaviour
     public void SetChosenController(Controllers newController)
     {
         chosenController = newController;
-        GameManager.instance.myGamepadManager.SetGamepadVisuals(chosenController);
+        GameManager.instance.ChangeButtonSprites(chosenController);
     }
 
     public Controllers GetChosenController()
@@ -125,45 +125,45 @@ public class InputManager : MonoBehaviour
 
     #region Game Inputs
 
-    public bool InputArrowUp()
-    {
-        return myActionsManager.Gameplay.ArrowUp.WasPressedThisFrame();
-    }
+    //public bool InputArrowUp()
+    //{
+    //    return myActionsManager.Gameplay.ArrowUp.WasPressedThisFrame();
+    //}
 
-    public bool InputArrowDown()
-    {
-        return myActionsManager.Gameplay.ArrowDown.WasPressedThisFrame();
-    }
+    //public bool InputArrowDown()
+    //{
+    //    return myActionsManager.Gameplay.ArrowDown.WasPressedThisFrame();
+    //}
 
-    public bool InputArrowLeft()
-    {
-        return myActionsManager.Gameplay.ArrowLeft.WasPressedThisFrame();
-    }
+    //public bool InputArrowLeft()
+    //{
+    //    return myActionsManager.Gameplay.ArrowLeft.WasPressedThisFrame();
+    //}
 
-    public bool InputArrowRight()
-    {
-        return myActionsManager.Gameplay.ArrowRight.WasPressedThisFrame();
-    }
+    //public bool InputArrowRight()
+    //{
+    //    return myActionsManager.Gameplay.ArrowRight.WasPressedThisFrame();
+    //}
 
-    public bool InputSquare()
-    {
-        return myActionsManager.Gameplay.Square.WasPressedThisFrame();
-    }
+    //public bool InputSquare()
+    //{
+    //    return myActionsManager.Gameplay.Square.WasPressedThisFrame();
+    //}
 
-    public bool InputTriangle()
-    {
-        return myActionsManager.Gameplay.Triangle.WasPressedThisFrame();
-    }
+    //public bool InputTriangle()
+    //{
+    //    return myActionsManager.Gameplay.Triangle.WasPressedThisFrame();
+    //}
 
-    public bool InputCircle()
-    {
-        return myActionsManager.Gameplay.Circle.WasPressedThisFrame();
-    }
+    //public bool InputCircle()
+    //{
+    //    return myActionsManager.Gameplay.Circle.WasPressedThisFrame();
+    //}
 
-    public bool InputCross()
-    {
-        return myActionsManager.Gameplay.Cross.WasPressedThisFrame();
-    }
+    //public bool InputCross()
+    //{
+    //    return myActionsManager.Gameplay.Cross.WasPressedThisFrame();
+    //}
 
     #endregion
 

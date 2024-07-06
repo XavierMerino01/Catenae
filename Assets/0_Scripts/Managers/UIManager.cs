@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject startArrow;
 
     public float fillSpeed;
-    private float buttonSpawnRate = 4.5f; 
+    private float buttonSpawnRate = 4; 
     private Coroutine fillCoroutine;
     private Coroutine errorTxtCoroutine;
     public GameObject[] errorTextObj;

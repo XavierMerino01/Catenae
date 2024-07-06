@@ -2787,7 +2787,7 @@ MonoBehaviour:
     levelData:
       levelDuration: 90
       buttonsPerCombination: 5
-      buttonSpawnRate: 3.5
+      buttonSpawnRate: 3.4
       timerHandleSprite: {fileID: 21300000, guid: 5d52b20f865aff242bfcb08c3b6f61a5, type: 3}
       isLastAge: 0
     ageSpritesParent: {fileID: 357744042}
@@ -2797,7 +2797,7 @@ MonoBehaviour:
     levelData:
       levelDuration: 60
       buttonsPerCombination: 5
-      buttonSpawnRate: 3.2
+      buttonSpawnRate: 3
       timerHandleSprite: {fileID: 21300000, guid: 5d52b20f865aff242bfcb08c3b6f61a5, type: 3}
       isLastAge: 0
     ageSpritesParent: {fileID: 1155798134}
@@ -2807,7 +2807,7 @@ MonoBehaviour:
     levelData:
       levelDuration: 78
       buttonsPerCombination: 6
-      buttonSpawnRate: 3.2
+      buttonSpawnRate: 3.1
       timerHandleSprite: {fileID: 21300000, guid: 5d52b20f865aff242bfcb08c3b6f61a5, type: 3}
       isLastAge: 0
     ageSpritesParent: {fileID: 1290340443}
@@ -2817,7 +2817,7 @@ MonoBehaviour:
     levelData:
       levelDuration: 62
       buttonsPerCombination: 6
-      buttonSpawnRate: 2.9
+      buttonSpawnRate: 2.8
       timerHandleSprite: {fileID: 21300000, guid: 5d52b20f865aff242bfcb08c3b6f61a5, type: 3}
       isLastAge: 1
     ageSpritesParent: {fileID: 889526401}
@@ -4633,7 +4633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1489135865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5077,7 +5077,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97758298a03a9da4d9706ee510632e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myGamepadManager: {fileID: 0}
   myUIManager: {fileID: 0}
   myButtonHandler: {fileID: 0}
   myAgeManager: {fileID: 0}
@@ -5471,6 +5470,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -21
       objectReference: {fileID: 0}
+    - target: {fileID: 2145262247965916706, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1152978747}
+    - target: {fileID: 2145262247965916706, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 3178587131348205051, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5574,6 +5581,14 @@ PrefabInstance:
     - target: {fileID: 5779635274899227537, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017051812037254750, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1152978747}
+    - target: {fileID: 7017051812037254750, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7364949563658191565, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
       propertyPath: m_IsActive
