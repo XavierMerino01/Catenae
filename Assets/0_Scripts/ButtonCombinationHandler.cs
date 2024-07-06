@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayActions
 {
@@ -156,12 +157,14 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
             if (targetButtonKey == key) 
             {
                 GameManager.instance.myUIManager.UpdateSpamProgress(1);
+                FindObjectOfType<AudioManager>().PlayAndChangePitch("TeclaFinal", 0.1f);
             }
             return;
         }
 
         if (targetButtonKey == key)
         {
+            FindObjectOfType<AudioManager>().Play("Acierto");
             currentButtonCount++;
             Destroy(currentButton);
             currentButtonObjects.RemoveAt(0);
@@ -174,13 +177,17 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("Error");
             RowFailed();
         }
     }
 
     public void RowCleared()
     {
-        Debug.Log("Row cleared");
+
+        FindObjectOfType<AudioManager>().PlayRandom("Linea1", "Linea2", "Linea3", "Linea4");
+        FindObjectOfType<AudioManager>().PlayRandom("EstirarCuerda1", "EstirarCuerda2", "EstirarCuerda3");
+        FindObjectOfType<AudioManager>().PlayRandom("TirarCuerda1", "TirarCuerda2", "TirarCuerda3", "TirarCuerda4", "TirarCuerda5", "TirarCuerda6");
 
         GameManager.instance.myAgeManager.PlayRowAnimation();
         MoveAllButtonsDown();
@@ -211,6 +218,9 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
 
         CreateNewButtonRow();
         CreateNewButtonRow();
+
+        FindObjectOfType<AudioManager>().PlayRandom("Dialogo1", "Dialogo2", "Dialogo3");
+        FindObjectOfType<AudioManager>().PlayRandom("Exclamacion1", "Exclamacion2", "Exclamacion3");
     }
 
     private void ClearLines(bool clearAllLines)

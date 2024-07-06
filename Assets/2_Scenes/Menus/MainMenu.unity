@@ -1187,43 +1187,43 @@ MonoBehaviour:
   sounds:
   - name: Menu
     clip: {fileID: 8300000, guid: ced9918898e7ef449bfe8ef391bb2f36, type: 3}
-    volume: 0.19999999
+    volume: 0.099999994
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Prehistoria
     clip: {fileID: 8300000, guid: b76186c28817bdb449840e678b8a2d67, type: 3}
-    volume: 0.5
+    volume: 0.099999994
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Egipto
     clip: {fileID: 8300000, guid: b6b0e32d31f58f74580f19ebf74437e9, type: 3}
-    volume: 0.5
+    volume: 0.099999994
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Roma
     clip: {fileID: 8300000, guid: cb8e5aa58b456454999d53765e8ed63e, type: 3}
-    volume: 0.5
+    volume: 0.11
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Templarios
     clip: {fileID: 0}
-    volume: 0.5
+    volume: 0.11
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Renacentismo
     clip: {fileID: 8300000, guid: 68274ba5118944c47938b692e424624c, type: 3}
-    volume: 0.5
+    volume: 0.11
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Actualiada
+  - name: Actualidad
     clip: {fileID: 8300000, guid: 5bce81530c7eea042b7a40dccfdc0e0d, type: 3}
-    volume: 0.5
+    volume: 0.11
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -1335,13 +1335,13 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Dialogo2
+  - name: Dialogo1
     clip: {fileID: 8300000, guid: 14741f948e6ec0e40b9e83dc441fac0d, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Dialogo1
+  - name: Dialogo2
     clip: {fileID: 8300000, guid: 47a7dc1bbebabeb4b994d3f8b2bcf3c4, type: 3}
     volume: 0.5
     pitch: 1
@@ -2594,7 +2594,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.75
+  m_fontSize: 89.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2731,7 +2731,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.75
+  m_fontSize: 89.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3391,7 +3391,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.75
+  m_fontSize: 89.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4419,7 +4419,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.75
+  m_fontSize: 89.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4936,7 +4936,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.75
+  m_fontSize: 89.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5073,7 +5073,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 211.7
+  m_fontSize: 211.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

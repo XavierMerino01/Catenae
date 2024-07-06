@@ -107,5 +107,8 @@ public class AgesManager : MonoBehaviour
         return Ages[currentAgeIndex].levelData;
     }
 
-  
+    public AgeData GetAgeData()
+    {
+        return Ages[currentAgeIndex];
+    }
 }

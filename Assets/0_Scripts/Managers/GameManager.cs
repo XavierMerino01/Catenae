@@ -62,6 +62,40 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void ChangeAgeMusic()
+    {
+        AgeData curentAge = myAgeManager.GetAgeData();
+        FindObjectOfType<AudioManager>().RestoreInitalPitch("TeclaFinal");
+        switch (curentAge.levelAge)
+        {
+            case (AgeData.HumanAge.Prehistory):
+                FindObjectOfType<AudioManager>().Stop("Menu");
+                FindObjectOfType<AudioManager>().Play("Prehistoria");
+                break;
+            case (AgeData.HumanAge.Egipt):
+                Debug.Log("EGIPT");
+                FindObjectOfType<AudioManager>().Stop("Prehistoria");
+                FindObjectOfType<AudioManager>().Play("Egipto");
+                break;
+            case (AgeData.HumanAge.Rome):
+                FindObjectOfType<AudioManager>().Stop("Egipto");
+                FindObjectOfType<AudioManager>().Play("Roma");
+                break;
+            case (AgeData.HumanAge.MiddleAge):
+                FindObjectOfType<AudioManager>().Stop("Roma");
+                FindObjectOfType<AudioManager>().Play("Templarios");
+                break;
+            case (AgeData.HumanAge.Renacentism):
+                FindObjectOfType<AudioManager>().Stop("Templarios");
+                FindObjectOfType<AudioManager>().Play("Renacentismo");
+                break;
+            case (AgeData.HumanAge.ContemporaryAge):
+                FindObjectOfType<AudioManager>().Stop("Renacentismo");
+                FindObjectOfType<AudioManager>().Play("Actualidad");
+                break;
+
+        }
+    }
     public void OnLevelTransitionEnd()
     {
         LevelData nextLevelData = myAgeManager.GetNextLevelData();
@@ -69,5 +103,7 @@ public class GameManager : MonoBehaviour
         myButtonHandler.SetButtonGenerationValues(nextLevelData.buttonsPerCombination, nextLevelData.buttonSpawnRate, nextLevelData.isLastAge);
         myUIManager.SetNextLevelUI(nextLevelData.levelDuration, nextLevelData.buttonSpawnRate, nextLevelData.timerHandleSprite);
         myAgeManager.SwapMaskInteraction();
+
+        FindObjectOfType<AudioManager>().Play("PortalOut");
     }
 }

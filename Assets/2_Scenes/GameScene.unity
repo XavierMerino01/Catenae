@@ -2097,7 +2097,7 @@ MonoBehaviour:
   spamButtonProgress: {fileID: 1792732076}
   timerBar: {fileID: 636334905}
   timerBarHandle: {fileID: 1822336875}
-  levelDuration: 5
+  levelDuration: 60
   transitionMask: {fileID: 909282881}
   transitionMaskFX: {fileID: 720929146}
   fillSpeed: 0.4
@@ -3254,6 +3254,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4129351834394880029, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
       propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4216671113569501249, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4314522900370742264, guid: 3d8ad4cb019bda646af81f84c498e190, type: 3}

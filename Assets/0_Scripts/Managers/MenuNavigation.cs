@@ -65,14 +65,14 @@ public class MenuNavigation : MonoBehaviour
                 case 1:
                     if (optionsScreen.activeSelf)
                     {
-                        Debug.Log("DDD");
+                       
                         FindObjectOfType<AudioManager>().Play("Atras");
                         optionsScreen.SetActive(false);
                         canMove = true;
                     }
                     else
                     {
-                        Debug.Log("AAA");
+                        
                         FindObjectOfType<AudioManager>().Play("Click");
                         optionsScreen.SetActive(true);
                         canMove = false;

@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour
         StartFade(0, 2);
         Invoke("StartTimer", 2);
 
+        FindObjectOfType<AudioManager>().Stop("Menu");
+        FindObjectOfType<AudioManager>().Play("Prehistoria");
+
     }
 
     public void StartTimer()
@@ -80,6 +83,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator SmoothFill(float startValue, float endValue)
     {
+        
         float elapsed = 0f;
         float duration = Mathf.Abs(endValue - startValue) / fillSpeed; // Calculate the duration based on fillSpeed
 
@@ -94,6 +98,8 @@ public class UIManager : MonoBehaviour
         spamButtonProgress.fillAmount = endValue;
         if (spamButtonProgress.fillAmount >= 1)
         {
+            GameManager.instance.ChangeAgeMusic();
+            FindObjectOfType<AudioManager>().Play("PortalIn");
             SetMask(true);
             GameManager.instance.myButtonHandler.DeactivateButtonSpam();
         }
