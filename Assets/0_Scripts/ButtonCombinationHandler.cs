@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayActions
 {
     public int buttonsPerCombination;
-    public int numberOfCombinations = 4;
+    public int numberOfCombinations;
     public float buttonSpawnRate;
 
     public bool isGeneratingButtons = false;
@@ -15,7 +15,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     public GameObject buttonPrefab;
     public GameObject spamButton;
     public Vector2[] rowPositions;
-    public float spacing = 1.5f;
+    public float spacing;
 
     private List<KeyCode>[,] buttonCombinations;
     private List<GameObject> currentButtonObjects = new List<GameObject>();
@@ -27,6 +27,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     private int buttonRowOffset = 2;
 
     private bool isSpamingButton;
+    private bool inputEnabled = true;
     private bool isLastLevel;
 
     void Awake()
@@ -52,9 +53,6 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         buttonCombinations = new List<KeyCode>[buttonsPerCombination, numberOfCombinations];
         spamButton.GetComponent<ButtonDisplay>().SetButton(KeyCode.W);
         spamButton.SetActive(false);
-
-        //TREURE
-        StartButtonGeneration();
     }
 
     #region Start/Stop generating buttons
@@ -71,8 +69,9 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     {
         while (isGeneratingButtons)
         {
-            CreateNewButtonRow();
             yield return new WaitForSeconds(buttonSpawnRate);
+            CreateNewButtonRow();
+            GameManager.instance.myUIManager.NextLineUI();
         }
     }
 
@@ -92,38 +91,36 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     {
         List<KeyCode> newButtonCombination = generator.GenerateButtonCombination(buttonsPerCombination);
 
-        if (currentButtonRows < numberOfCombinations)
+        for (int i = 0; i < buttonsPerCombination; i++)
         {
-            for (int i = 0; i < buttonsPerCombination; i++)
+            if (buttonCombinations[i, currentButtonRows] == null)
             {
-                if (buttonCombinations[i, currentButtonRows] == null)
-                {
-                    buttonCombinations[i, currentButtonRows] = new List<KeyCode>();
-                }
-                else
-                {
-                    buttonCombinations[i, currentButtonRows].Clear();
-                }
-
-                buttonCombinations[i, currentButtonRows].Add(newButtonCombination[i]);
+                buttonCombinations[i, currentButtonRows] = new List<KeyCode>();
+            }
+            else
+            {
+                buttonCombinations[i, currentButtonRows].Clear();
             }
 
-            Debug.Log("Button Combinations for row " + currentButtonRows);
-            for (int i = 0; i < buttonsPerCombination; i++)
-            {
-                Debug.Log("Row " + currentButtonRows + ", Column " + i + ": " + string.Join(", ", buttonCombinations[i, currentButtonRows]));
-            }
-
-            DisplayButtonCombination(newButtonCombination);
-            currentButtonRows++;
+            buttonCombinations[i, currentButtonRows].Add(newButtonCombination[i]);
         }
-        else
+
+        Debug.Log("Button Combinations for row " + currentButtonRows);
+        for (int i = 0; i < buttonsPerCombination; i++)
+        {
+            Debug.Log("Row " + currentButtonRows + ", Column " + i + ": " + string.Join(", ", buttonCombinations[i, currentButtonRows]));
+        }
+
+        DisplayButtonCombination(newButtonCombination);
+        currentButtonRows++;
+        if (currentButtonRows >= numberOfCombinations)
         {
             Debug.Log("GAME OVER");
             StopButtonGeneration();
-            ClearLines(true);
-            //TO DO: Game Over
+            inputEnabled = false;
+            GameManager.instance.GameOver(false);
         }
+
     }
 
     private void DisplayButtonCombination(List<KeyCode> buttonsToDisplay)
@@ -143,6 +140,8 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
 
     public void HandleButtonPress(KeyCode key)
     {
+        if (!inputEnabled) return;
+
         if (currentButtonObjects[0] == null)
         {
             return;
@@ -263,6 +262,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         if (isLastLevel)
         {
             Debug.Log("YOU WIN");
+            GameManager.instance.GameOver(true);
         }
         else
         {
@@ -300,8 +300,6 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         {
             buttonRowOffset = 0;
         }
-
-        StartButtonGeneration();
     }
 
     #region ButtonPresses

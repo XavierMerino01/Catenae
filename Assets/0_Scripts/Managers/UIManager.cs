@@ -13,10 +13,12 @@ public class UIManager : MonoBehaviour
     private Image timerHandleFill;
     [SerializeField] private float levelDuration;
     [SerializeField] private Animator transitionMask;
+    [SerializeField] private GameObject transitionMaskFX;
 
     public float fillSpeed;
     private float buttonSpawnRate = 4.5f; 
     private Coroutine fillCoroutine;
+    public GameObject errorTextObj;
 
     private void Start()
     {
@@ -24,16 +26,14 @@ public class UIManager : MonoBehaviour
 
         timerHandleFill = timerBarHandle.transform.GetChild(0).GetComponent<Image>();
 
-        StartTimer();
-
-        if (SceneManager.GetActiveScene().name != "StartScreen") return;
-
         StartFade(0, 2);
+        Invoke("StartTimer", 2);
 
     }
 
     public void StartTimer()
     {
+        GameManager.instance.myButtonHandler.StartButtonGeneration();
         StartCoroutine(TimerCoroutine(levelDuration));
         StartCoroutine(NextLineTimer(buttonSpawnRate));// 60 seconds for one minute
     }
@@ -49,8 +49,12 @@ public class UIManager : MonoBehaviour
         }
         timerBar.value = 1f; // Ensure the bar is full at the end
         Debug.Log("Timer ended");
-        StopCoroutine(NextLineTimer(0));
         GameManager.instance.myButtonHandler.EndCurrentLevel();
+    }
+
+    public void NextLineUI()
+    {
+        StartCoroutine(NextLineTimer(buttonSpawnRate));
     }
 
     private IEnumerator NextLineTimer(float spawnRate)
@@ -63,7 +67,6 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         timerHandleFill.fillAmount = 1f; // Ensure the bar is full at the end
-        StartCoroutine(NextLineTimer(buttonSpawnRate));
     }
 
     public void UpdateSpamProgress(float newProgress)
@@ -110,6 +113,7 @@ public class UIManager : MonoBehaviour
     private void SetMask(bool maskMode)
     {
         transitionMask.gameObject.SetActive(maskMode);
+        transitionMaskFX.gameObject.SetActive(maskMode);
     }
 
     public void StartFade(float targetAlpha, float duration)

@@ -49,16 +49,25 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void GameOver()
+    public void GameOver(bool win)
     {
-
+        if (win)
+        {
+            myUIManager.StartFade(1, 2);
+        }
+        else
+        {
+            myUIManager.StartFade(1, 2);
+        }
+        
     }
 
     public void OnLevelTransitionEnd()
     {
         LevelData nextLevelData = myAgeManager.GetNextLevelData();
-        myUIManager.SetNextLevelUI(nextLevelData.levelDuration, nextLevelData.buttonSpawnRate, nextLevelData.timerHandleSprite);
+
         myButtonHandler.SetButtonGenerationValues(nextLevelData.buttonsPerCombination, nextLevelData.buttonSpawnRate, nextLevelData.isLastAge);
+        myUIManager.SetNextLevelUI(nextLevelData.levelDuration, nextLevelData.buttonSpawnRate, nextLevelData.timerHandleSprite);
         myAgeManager.SwapMaskInteraction();
     }
 }
