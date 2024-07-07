@@ -25,6 +25,8 @@ public class MenuNavigation : MonoBehaviour
     public float moveDistance;
     public GameObject cuerda;
 
+    public TMP_Text back1, back2, back3;
+
     private int currentIndex = 0;
     private bool canMove = true;
     private bool canSelect = true;
@@ -99,6 +101,7 @@ public class MenuNavigation : MonoBehaviour
                         FindObjectOfType<AudioManager>().Play("Click");
                         optionsScreen.SetActive(true);
                         canMove = false;
+                        
 
                     }
                     break;
