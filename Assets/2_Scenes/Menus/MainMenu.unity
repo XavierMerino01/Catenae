@@ -694,6 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81650fa487fd7a4581326d0c4c0fe64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetFinalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &282289855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1316,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PortalDef
     clip: {fileID: 8300000, guid: fd900575cf020d24095b035ae42cc86e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ZoomFinal
+    clip: {fileID: 8300000, guid: a7e0e2f25523787449eb34cd89abaa4f, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -2641,7 +2648,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.85
+  m_fontSize: 107.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2911,7 +2918,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.85
+  m_fontSize: 107.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3628,7 +3635,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.85
+  m_fontSize: 107.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5206,7 +5213,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.85
+  m_fontSize: 107.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5671,7 +5678,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 106.85
+  m_fontSize: 107.55
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5808,7 +5815,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 210.85
+  m_fontSize: 211.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

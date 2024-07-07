@@ -17,9 +17,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject startArrow;
+    [SerializeField] private GameObject startArrow2;
+    [SerializeField] private GameObject pausePanel;
+
 
     public float fillSpeed;
     private float buttonSpawnRate = 4; 
+    private Coroutine timerCoroutine;
     private Coroutine fillCoroutine;
     private Coroutine errorTxtCoroutine;
     public GameObject[] errorTextObj;
@@ -41,6 +45,7 @@ public class UIManager : MonoBehaviour
 
     }
 
+    #region Start Arrows
     public void ActivateStartArrow()
     {
         startArrow.gameObject.SetActive(true);
@@ -51,10 +56,28 @@ public class UIManager : MonoBehaviour
         startArrow.gameObject.SetActive(false);
     }
 
+    public void ActivateStartArrow2()
+    {
+        if (startArrow2 != null)
+        {
+            startArrow2.gameObject.SetActive(true);
+        }
+    }
+
+    public void DeactivateStartArrow2()
+    {
+        if (startArrow2 != null)
+        {
+            startArrow2.gameObject.SetActive(false);
+            Destroy(startArrow2);
+        }
+    }
+    #endregion
+
     public void StartTimer()
     {
         GameManager.instance.myButtonHandler.StartButtonGeneration();
-        StartCoroutine(TimerCoroutine(levelDuration));
+        timerCoroutine = StartCoroutine(TimerCoroutine(levelDuration));
         StartCoroutine(NextLineTimer(buttonSpawnRate));// 60 seconds for one minute
     }
 
@@ -131,6 +154,7 @@ public class UIManager : MonoBehaviour
         levelDuration = nextRoundDuration;
         timerBar.value = 0;
         timerBarHandle.sprite = timerHandleSprite;
+        timerHandleFill.sprite = timerHandleSprite;
         buttonSpawnRate = newSpawnRate;
         StartTimer();
     }
@@ -166,14 +190,15 @@ public class UIManager : MonoBehaviour
 
     public void UIGameOver()
     {
+        StopCoroutine(timerCoroutine);
         StartFade(1, 2);
         Invoke("ActivateGameOverPanel", 2.0f);
     }
 
     public void UIWin()
     {
-        StartFade(1, 2);
-        Invoke("ActivateWinPanel", 2.0f);
+        StartFade(1, 0.01f);
+        Invoke("ActivateWinPanel", 4.0f);
     }
 
     public void ActivateWinPanel()
@@ -189,6 +214,11 @@ public class UIManager : MonoBehaviour
     private void DeactivateGameOverPanel()
     {
         gameOverPanel.SetActive(false);
+    }
+
+    public void TogglePausePanel(bool newState)
+    {
+        pausePanel.SetActive(newState);
     }
 
     #region ButtonMethods

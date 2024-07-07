@@ -5,10 +5,14 @@ public class ScreenShake : MonoBehaviour
 {
     private Transform cameraTransform;
     private Vector3 originalPosition;
+    private Camera mainCamera;
+
+    [SerializeField] private Vector3 targetFinalPosition;
 
     private void Awake()
     {
         cameraTransform = Camera.main.transform;
+        mainCamera = Camera.main;
     }
 
     private void Update()
@@ -42,4 +46,32 @@ public class ScreenShake : MonoBehaviour
 
         cameraTransform.localPosition = originalPosition;
     }
+
+    public void FinalCameraTransition()
+    {
+        StartCoroutine(FinalCameraTransitionCoroutine(1.35f, targetFinalPosition, 6.0f));
+    }
+
+    private IEnumerator FinalCameraTransitionCoroutine(float targetSize, Vector3 targetPosition, float duration)
+    {
+        float elapsed = 0.0f;
+        float initialSize = mainCamera.orthographicSize;
+        Vector3 initialPosition = cameraTransform.position;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+
+            mainCamera.orthographicSize = Mathf.Lerp(initialSize, targetSize, t);
+            cameraTransform.position = Vector3.Lerp(initialPosition, targetPosition, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        mainCamera.orthographicSize = targetSize;
+        cameraTransform.position = targetPosition;
+        GameManager.instance.myUIManager.UIWin();
+    }
+
 }

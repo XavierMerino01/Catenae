@@ -39,6 +39,10 @@ public class InputManager : MonoBehaviour
 
         InputSystem.onDeviceChange += CheckNewDevice;
 
+
+    }
+    private void Start()
+    {
         CheckStartingDevice();
     }
 

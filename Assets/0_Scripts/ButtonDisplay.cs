@@ -17,6 +17,7 @@ public class ButtonDisplay : MonoBehaviour
 
     public Sprite[] keySprites;
     public Sprite[] xboxSprites;
+    public Sprite[] playSprites;
 
     private SpriteRenderer spriteRenderer;
     private KeyCode currentKey;
@@ -81,6 +82,15 @@ public class ButtonDisplay : MonoBehaviour
         for (int i = 0; i < usedSprites.Length; i++)
         {
             usedSprites[i] = xboxSprites[i];
+        }
+        SetButton(currentKey);
+    }
+
+    public void AssignPlayKeys()
+    {
+        for (int i = 0; i < usedSprites.Length; i++)
+        {
+            usedSprites[i] = playSprites[i];
         }
         SetButton(currentKey);
     }
