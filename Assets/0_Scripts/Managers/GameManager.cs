@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("GameOver");
             myUIManager.UIGameOver();
         }
         
