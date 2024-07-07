@@ -54,6 +54,8 @@ public class OptionsMenu : MonoBehaviour
         postProcessProfile = postProcessVolume.profile;
         postProcessProfile.TryGetSettings(out colorGrading);
 
+        AudioListener.volume = 1;
+
         //SetupNavigation();
     }
 
