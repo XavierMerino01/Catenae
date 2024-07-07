@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public AgesManager myAgeManager;
     [HideInInspector] public TextAssigner myTextAssigner;
 
+    private bool isPaused;
+
     public void InitLevel()
     {
         myUIManager = FindObjectOfType<UIManager>();
@@ -42,6 +44,22 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+    public void PauseGame()
+    {
+        if (!isPaused)
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1; 
+            isPaused = false;
+        }
+
+        myButtonHandler.inputEnabled = !isPaused;
+        myUIManager.TogglePausePanel(isPaused);
     }
 
     public void LoadMainMenu()
@@ -59,7 +77,7 @@ public class GameManager : MonoBehaviour
         if (win)
         {
             myTextAssigner.FinalTransition();
-            myUIManager.UIWin();
+            //myUIManager.UIWin();
         }
         else
         {
@@ -150,7 +168,19 @@ public class GameManager : MonoBehaviour
                     button.AssignPcKeys();
                 }
                 break;
+            case InputManager.Controllers.PlayStation:
+                foreach (ButtonDisplay button in buttons)
+                {
+                    button.AssignPlayKeys();
+                }
+                break;
 
+            default:
+                foreach (ButtonDisplay button in buttons)
+                {
+                    button.AssignXboxKeys();
+                }
+                break;
 
         }
     }

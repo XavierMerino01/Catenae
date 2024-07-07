@@ -28,7 +28,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
     private int buttonRowOffset = 2;
 
     private bool isSpamingButton;
-    private bool inputEnabled = true;
+    public bool inputEnabled = true;
     private bool isLastLevel;
 
     public ScreenShake screen;
@@ -293,6 +293,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
 
     private void ActivateButtonSpam()
     {
+        GameManager.instance.myUIManager.ActivateStartArrow2();
         spamButton.SetActive(true);
         currentButtonObjects.Add(spamButton);
         isSpamingButton = true;
@@ -300,6 +301,7 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
 
     public void DeactivateButtonSpam()
     {
+        GameManager.instance.myUIManager.DeactivateStartArrow2();
         spamButton.SetActive(false);
         currentButtonObjects.RemoveAt(0);
         isSpamingButton = false;
@@ -416,6 +418,14 @@ public class ButtonCombinationHandler : MonoBehaviour, GameControls.IGameplayAct
         if (context.performed)
         {
             HandleButtonPress(KeyCode.S);
+        }
+    }
+
+    public void OnPauseButton(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager.instance.PauseGame();
         }
     }
     #endregion

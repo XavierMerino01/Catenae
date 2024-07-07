@@ -98,6 +98,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""696120ed-4b9b-4158-a818-5aca905ed418"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -276,6 +285,39 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Cross"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abaab84a-9058-405e-8390-fdbe569bd864"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50b5d888-5d59-4826-9603-15526f03f196"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0be3d1b-4e8d-462d-9317-6b61cbf9b6e3"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -424,6 +466,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Gameplay_Triangle = m_Gameplay.FindAction("Triangle", throwIfNotFound: true);
         m_Gameplay_Circle = m_Gameplay.FindAction("Circle", throwIfNotFound: true);
         m_Gameplay_Cross = m_Gameplay.FindAction("Cross", throwIfNotFound: true);
+        m_Gameplay_PauseButton = m_Gameplay.FindAction("PauseButton", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_MoveRight = m_Menu.FindAction("MoveRight", throwIfNotFound: true);
@@ -499,6 +542,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Triangle;
     private readonly InputAction m_Gameplay_Circle;
     private readonly InputAction m_Gameplay_Cross;
+    private readonly InputAction m_Gameplay_PauseButton;
     public struct GameplayActions
     {
         private @GameControls m_Wrapper;
@@ -511,6 +555,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @Triangle => m_Wrapper.m_Gameplay_Triangle;
         public InputAction @Circle => m_Wrapper.m_Gameplay_Circle;
         public InputAction @Cross => m_Wrapper.m_Gameplay_Cross;
+        public InputAction @PauseButton => m_Wrapper.m_Gameplay_PauseButton;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -544,6 +589,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Cross.started += instance.OnCross;
             @Cross.performed += instance.OnCross;
             @Cross.canceled += instance.OnCross;
+            @PauseButton.started += instance.OnPauseButton;
+            @PauseButton.performed += instance.OnPauseButton;
+            @PauseButton.canceled += instance.OnPauseButton;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -572,6 +620,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Cross.started -= instance.OnCross;
             @Cross.performed -= instance.OnCross;
             @Cross.canceled -= instance.OnCross;
+            @PauseButton.started -= instance.OnPauseButton;
+            @PauseButton.performed -= instance.OnPauseButton;
+            @PauseButton.canceled -= instance.OnPauseButton;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -669,6 +720,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnTriangle(InputAction.CallbackContext context);
         void OnCircle(InputAction.CallbackContext context);
         void OnCross(InputAction.CallbackContext context);
+        void OnPauseButton(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
