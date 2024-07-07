@@ -203,6 +203,8 @@ public class UIManager : MonoBehaviour
 
     public void DeactivateAllTexts()
     {
+        
+        errorTxtCoroutine = null;
         for (int i = 0; i < errorTextObj.Length; i++)
         {
             errorTextObj[i].gameObject.SetActive(false);
