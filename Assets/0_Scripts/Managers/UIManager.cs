@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -27,6 +28,9 @@ public class UIManager : MonoBehaviour
     private Coroutine fillCoroutine;
     private Coroutine errorTxtCoroutine;
     public GameObject[] errorTextObj;
+
+    public GameObject firstButtonGameOver;
+    public GameObject firstButtonWin;
 
     public ScreenShake screenEffects;
 
@@ -204,11 +208,19 @@ public class UIManager : MonoBehaviour
     public void ActivateWinPanel()
     {
         winPanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.firstSelectedGameObject = firstButtonWin;
+        EventSystem.current.SetSelectedGameObject(firstButtonWin);
     }
 
     public void ActivateGameOverPanel()
     {
         gameOverPanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.firstSelectedGameObject = firstButtonGameOver;
+        EventSystem.current.SetSelectedGameObject(firstButtonGameOver);
     }
 
     private void DeactivateGameOverPanel()
