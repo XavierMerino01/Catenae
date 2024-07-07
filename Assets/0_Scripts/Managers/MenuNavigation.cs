@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class MenuNavigation : MonoBehaviour
 {
@@ -20,9 +21,14 @@ public class MenuNavigation : MonoBehaviour
 
 
     public float moveSpeed = 20f;
+    public float spriteMove;
+    public float moveDistance;
+    public GameObject cuerda;
+
     private int currentIndex = 0;
     private bool canMove = true;
     private bool canSelect = true;
+    private Vector3 targetPosition;
 
     private void Start()
     {
@@ -33,6 +39,7 @@ public class MenuNavigation : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
 
     }
     private void Update()
@@ -45,6 +52,7 @@ public class MenuNavigation : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Desplazamiento");
             StartCoroutine(MoveMenu(Vector3.right));
+            StartCoroutine(Move(Vector3.left));
         }
     }
 
@@ -54,6 +62,7 @@ public class MenuNavigation : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("Desplazamiento");
             StartCoroutine(MoveMenu(Vector3.left));
+            StartCoroutine(Move(Vector3.left));
         }
     }
 
@@ -248,6 +257,25 @@ public class MenuNavigation : MonoBehaviour
         arrowRight.SetActive(true);
     }
 
+    private IEnumerator Move(Vector3 direction)
+    {
+        canMove = false;
+        Vector3 startPosition = cuerda.transform.position;
+        targetPosition = startPosition + direction * moveDistance;
+
+        float elapsedTime = 0f;
+        float moveTime = moveDistance / moveSpeed;
+
+        while (elapsedTime < moveTime)
+        {
+            cuerda.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / moveTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        cuerda.transform.position = targetPosition;
+        canMove = true;
+    }
     public void DeactivateAllButtons()
     {
         foreach (Button button in menuOptions)
