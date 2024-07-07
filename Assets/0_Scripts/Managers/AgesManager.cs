@@ -83,6 +83,14 @@ public class AgesManager : MonoBehaviour
         }
     }
 
+    public void PlaySweatAnim()
+    {
+        foreach (Animator anim in currentAgeAnimators)
+        {
+            anim.Play("Char_sweat");
+        }
+    }
+
 
     public void SwapMaskInteraction()
     {

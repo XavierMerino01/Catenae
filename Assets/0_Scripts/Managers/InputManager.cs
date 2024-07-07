@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.DualShock;
-using UnityEngine.InputSystem.Switch;
+//using UnityEngine.InputSystem.Switch;
 using UnityEngine.InputSystem.XInput;
 
 public class InputManager : MonoBehaviour
@@ -98,11 +98,6 @@ public class InputManager : MonoBehaviour
                         case DualShockGamepad:
                             Debug.Log("PS connected");
                             SetChosenController(Controllers.PlayStation);
-                            break;
-
-                        case SwitchProControllerHID:
-                            Debug.Log("Switch connected");
-                            SetChosenController(Controllers.Switch);
                             break;
                     }
                     

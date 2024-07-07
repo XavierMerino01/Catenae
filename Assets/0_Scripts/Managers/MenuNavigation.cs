@@ -299,4 +299,13 @@ public class MenuNavigation : MonoBehaviour
             button.gameObject.SetActive(true);
         }
     }
+
+    public GameObject[] GetTextObjects()
+    {
+
+        GameObject[] textObjectsArray = new GameObject[3] { back1.gameObject, back2.gameObject, back3.gameObject};
+        
+
+        return textObjectsArray;
+    }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -178,6 +179,7 @@ public class UIManager : MonoBehaviour
     {
         if (errorTxtCoroutine == null)
         {
+            GameManager.instance.myAgeManager.PlaySweatAnim();
             errorTxtCoroutine = StartCoroutine(ErrorTextCoroutine(errorTextObj[missedButtonIndex], missedButtonIndex));
         }
         
@@ -197,6 +199,14 @@ public class UIManager : MonoBehaviour
         StopCoroutine(timerCoroutine);
         StartFade(1, 2);
         Invoke("ActivateGameOverPanel", 2.0f);
+    }
+
+    public void DeactivateAllTexts()
+    {
+        for (int i = 0; i < errorTextObj.Length; i++)
+        {
+            errorTextObj[i].gameObject.SetActive(false);
+        }
     }
 
     public void UIWin()
@@ -237,6 +247,7 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         GameManager.instance.RestartCurrentLevel();
+        DeactivateAllTexts();
         DeactivateGameOverPanel();
         StopAllCoroutines();
         StartFade(0, 2);

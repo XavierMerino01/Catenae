@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -64,6 +65,14 @@ public class GameManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
+        AudioSource[] sources = GetComponents<AudioSource>();
+        foreach(AudioSource s in sources)
+        {
+            s.Stop();
+        }
+
+        FindObjectOfType<AudioManager>().Play("Menu");
+
         SceneManager.LoadScene(0);
     }
 
@@ -153,6 +162,41 @@ public class GameManager : MonoBehaviour
 
     public void ChangeButtonSprites(InputManager.Controllers newController)
     {
+        
+
+        if (SceneManager.GetActiveScene().name == "MainMenu") 
+        {
+            GameObject[] textObjects = FindObjectOfType<MenuNavigation>().GetTextObjects();
+
+            switch (newController)
+            {
+                case InputManager.Controllers.Xbox:
+                    foreach (GameObject text in textObjects)
+                    {
+                        text.GetComponent<TMP_Text>().text = "<- B";
+                    }
+                break;
+                case InputManager.Controllers.Keyboard:
+                    foreach (GameObject text in textObjects)
+                    {
+                        text.GetComponent<TMP_Text>().text = "<- Esc";
+                    }
+                    break;
+                case InputManager.Controllers.PlayStation:
+                    foreach (GameObject text in textObjects)
+                    {
+                        text.GetComponent<TMP_Text>().text = "<- O";
+                    }
+                    break;
+                default:
+                    foreach (GameObject text in textObjects)
+                    {
+                        text.GetComponent<TMP_Text>().text = "<- B";
+                    }
+                    break;
+            }
+        }
+
         ButtonDisplay[] buttons = (ButtonDisplay[])Object.FindObjectsOfType(typeof(ButtonDisplay));
 
         switch (newController)
