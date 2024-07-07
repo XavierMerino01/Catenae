@@ -309,6 +309,15 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""b4743420-6e1d-4965-831c-97c8d4e14175"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -377,6 +386,28 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
                     ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""448ef8d3-eb46-4f74-a285-6afa5469e65d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""610d9d7e-4891-4483-9c9e-6cb540fcb5f8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -398,6 +429,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         m_Menu_MoveRight = m_Menu.FindAction("MoveRight", throwIfNotFound: true);
         m_Menu_MoveLeft = m_Menu.FindAction("MoveLeft", throwIfNotFound: true);
         m_Menu_Select = m_Menu.FindAction("Select", throwIfNotFound: true);
+        m_Menu_Cancel = m_Menu.FindAction("Cancel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -564,6 +596,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Menu_MoveRight;
     private readonly InputAction m_Menu_MoveLeft;
     private readonly InputAction m_Menu_Select;
+    private readonly InputAction m_Menu_Cancel;
     public struct MenuActions
     {
         private @GameControls m_Wrapper;
@@ -571,6 +604,7 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         public InputAction @MoveRight => m_Wrapper.m_Menu_MoveRight;
         public InputAction @MoveLeft => m_Wrapper.m_Menu_MoveLeft;
         public InputAction @Select => m_Wrapper.m_Menu_Select;
+        public InputAction @Cancel => m_Wrapper.m_Menu_Cancel;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -589,6 +623,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
+            @Cancel.started += instance.OnCancel;
+            @Cancel.performed += instance.OnCancel;
+            @Cancel.canceled += instance.OnCancel;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -602,6 +639,9 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
+            @Cancel.started -= instance.OnCancel;
+            @Cancel.performed -= instance.OnCancel;
+            @Cancel.canceled -= instance.OnCancel;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -635,5 +675,6 @@ public partial class @GameControls: IInputActionCollection2, IDisposable
         void OnMoveRight(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
     }
 }

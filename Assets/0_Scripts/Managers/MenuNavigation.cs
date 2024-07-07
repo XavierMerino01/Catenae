@@ -12,6 +12,11 @@ public class MenuNavigation : MonoBehaviour
     [Header("Screens")]
     public GameObject creditsScreen;
     public GameObject optionsScreen;
+    public GameObject TemaScreen;
+
+    [Header("Arrows")]
+    public GameObject arrowRight;
+    public GameObject arrowLeft;
 
 
     public float moveSpeed = 20f;
@@ -25,8 +30,15 @@ public class MenuNavigation : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(menuOptions[2].gameObject); 
         }
-    }
 
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+    }
+    private void Update()
+    {
+        //Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+    }
     public void MoveRight()
     {
         if (canMove)
@@ -47,7 +59,7 @@ public class MenuNavigation : MonoBehaviour
 
     public void SelectOption()
     {
-        Debug.Log(canSelect);
+        ///Debug.Log(canSelect);
         if (canSelect)
         {
             Debug.Log("SelectOption called");
@@ -60,19 +72,21 @@ public class MenuNavigation : MonoBehaviour
             {
                 case 0:
                     FindObjectOfType<AudioManager>().Play("Click");
-                    Debug.Log("we¡ll see");
+                    TemaScreen.SetActive(true);
+                    canMove = false;
                     break;
                 case 1:
                     if (optionsScreen.activeSelf)
                     {
                        
-                        FindObjectOfType<AudioManager>().Play("Atras");
-                        optionsScreen.SetActive(false);
-                        canMove = true;
+                        //FindObjectOfType<AudioManager>().Play("Atras");
+                        //optionsScreen.SetActive(false);
+                        //canMove = true;
+                        
                     }
                     else
                     {
-                        
+                        //DeactivateAllButtons();
                         FindObjectOfType<AudioManager>().Play("Click");
                         optionsScreen.SetActive(true);
                         canMove = false;
@@ -86,13 +100,15 @@ public class MenuNavigation : MonoBehaviour
                 case 3:
                     if (creditsScreen.activeSelf)
                     {
-
-                        creditsScreen.SetActive(false);
-                        canMove = true;
-                        FindObjectOfType<AudioManager>().Play("Atras");
+                        
+                        //creditsScreen.SetActive(false);
+                        //canMove = true;
+                        //FindObjectOfType<AudioManager>().Play("Atras");
                     }
                     else
                     {
+                        //DeactivateAllButtons();
+
                         creditsScreen.SetActive(true);
                         canMove = false;
                         FindObjectOfType<AudioManager>().Play("Click");
@@ -106,8 +122,53 @@ public class MenuNavigation : MonoBehaviour
 
             }
         }
-       
+    }
 
+    public void CancelOption()
+    {
+        if (canSelect)
+        {
+            canSelect = false;
+            StartCoroutine(CooldownSelectOption());
+            int buttonInPosition2Index = (currentIndex + 2) % menuOptions.Length;
+
+            switch (buttonInPosition2Index)
+            {
+                case 0:
+                    FindObjectOfType<AudioManager>().Play("Atras");
+                    TemaScreen.SetActive(false);
+                    canMove = true;
+                    break;
+                case 1:
+                    if (optionsScreen.activeSelf)
+                    {
+                        FindObjectOfType<AudioManager>().Play("Atras");
+                        optionsScreen.SetActive(false);
+                        canMove = true;
+                        //ActivateAllButtons();
+                    }
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    if (creditsScreen.activeSelf)
+                    {
+
+                        creditsScreen.SetActive(false);
+                        canMove = true;
+                        FindObjectOfType<AudioManager>().Play("Atras");
+                        //ActivateAllButtons();
+                    }
+                    break;
+                case 4:
+                    GameManager.instance.CloseGame();
+
+                    break;
+
+            }
+        }
     }
     private IEnumerator CooldownSelectOption()
     {
@@ -118,6 +179,8 @@ public class MenuNavigation : MonoBehaviour
     private IEnumerator MoveMenu(Vector3 direction)
     {
         canMove = false;
+        arrowLeft.SetActive(false);
+        arrowRight.SetActive(false);
         int previousIndex = currentIndex;
         
         if (direction == Vector3.right)
@@ -181,7 +244,28 @@ public class MenuNavigation : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(menuOptions[newIndices[2]].gameObject);
 
         canMove = true;
+        arrowLeft.SetActive(true);
+        arrowRight.SetActive(true);
     }
 
+    public void DeactivateAllButtons()
+    {
+        foreach (Button button in menuOptions)
+        {
+            if (button != menuOptions[1])
+            {
+                button.gameObject.SetActive(false);
+            }
+            
+        }
+    }
 
+    public void ActivateAllButtons()
+    {
+        foreach (Button button in menuOptions)
+        {
+            //button.interactable = true;
+            button.gameObject.SetActive(true);
+        }
+    }
 }
