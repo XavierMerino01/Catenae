@@ -2846,10 +2846,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Idea original y Game Design: \r\n\rAlex Izman\r\n\r\nLead Programmer:\r\n\rXavier
-    Merino\r\n\r\nM\xFAsica y sonido:\r\n\rAlejandro Triguero - Indigobeatts\n\r\nDirecci\xF3n
-    art\xEDstica, fondos y UI: \r\n\rAlba Reche\r\n\r\n\r\nColaboradores\r\n\n\rProgramaci\xF3n:\r\n\rMart\xED
-    Serras\r\n\r\nFondos:\r\n\rM\xEDriam Moreno\r\n\r\nPersonajes:\r\n\rFran Rubio\r\nAlex
+  m_text: "Idea original i Game Design: \r\n\rAlex Izman\r\n\r\nLead Programmer:\r\n\rXavier
+    Merino\r\n\r\nM\xFAsica i so:\r\n\rAlejandro Triguero - Indigobeatts\n\r\nDirecci\xF3
+    art\xEDstica, fons i UI: \r\n\rAlba Reche\r\n\r\n\r\nCol\xB7laboradors\r\n\n\rProgramaci\xF3:\r\n\rMart\xED
+    Serras\r\n\r\nFondos:\r\n\rM\xEDriam Moreno\r\n\r\nPersonatges:\r\n\rFran Rubio\r\nAlex
     Valencia\r\n\r\nFX: \r\n\rJavier Moreno\r\n\r\nQA:\r\n\rSantiago Dopazo - Yagg\r\n\r\nNarrativa:\r\n\rAlex
     Izman\r\n\n"
   m_isRightToLeft: 0
@@ -3246,7 +3246,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volumen
+  m_text: Volum
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
   m_sharedMaterial: {fileID: -7373799568276540995, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
@@ -3520,7 +3520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &478892352
@@ -3707,7 +3707,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 0.00024414062, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539154273
@@ -5925,7 +5925,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Empezar
+  m_text: "Comen\xE7ar"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
   m_sharedMaterial: {fileID: -7373799568276540995, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
@@ -6436,7 +6436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Opciones
+  m_text: Opcions
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
   m_sharedMaterial: {fileID: -7373799568276540995, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
@@ -7322,7 +7322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Cr\xE9ditos"
+  m_text: "Cr\xE8dits"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
   m_sharedMaterial: {fileID: -7373799568276540995, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
@@ -8088,7 +8088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Brillo
+  m_text: Brillantor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
   m_sharedMaterial: {fileID: -7373799568276540995, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
@@ -11184,9 +11184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Salir
-
-'
+  m_text: Sortir
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
   m_sharedMaterial: {fileID: -7373799568276540995, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
@@ -11350,7 +11348,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 211.05
+  m_fontSize: 211.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11458,17 +11456,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nCatenea (Cadena):\r\n\r\nLa manera que hemos escogido para representar
-    el tema \"Inteligencia colectiva vs. Locura colectiva\" es a trav\xE9s del concepto
-    de la cadena humana.\n\nLa cooperaci\xF3n de los seres humanos desde el principio
-    de su historia, compartiendo conocimientos entre generaciones, nos parec\xEDa
-    un concepto poderoso para representar la inteligencia colectiva, ya que gracias
-    a ella hemos llegado hasta donde estamos hoy.\n\nLa cuerda que une a la cadena
-    humana y que \"tira del futuro hacia el presente\" tambi\xE9n nos funcionaba
-    como simbolog\xEDa de una penitencia compartida, donde todos y todas luchamos
-    contra nuestras dudas existenciales y nuestros demonios, afectando en el proceso
-    a las personas que nos rodean.\n\n\xA1Gracias por jugar!\n\nEl equipo de Two
-    Weeks at Home\n"
+  m_text: "Catenae (Cadena)\r\n\r\nLa manera que hem escollit per representar el
+    tema \u201CIntel\xB7lig\xE8ncia col\xB7lectiva VS Bogeria col\xB7lectiva\u201D
+    \xE9s a trav\xE9s del concepte de la cadena humana. La cooperaci\xF3 dels \xE9ssers
+    humans des del principi de la seva hist\xF2ria, compartint coneixements entre
+    generacions, ens semblava un concepte poder\xF3s per representar la intel\xB7lig\xE8ncia
+    col\xB7lectiva, ja que gr\xE0cies a ella hem arribat fins on som avui. \r\n\r\nLa
+    corda que uneix la cadena humana i que \u201Cestira el futur cap al present\u201D,
+    tamb\xE9 ens funcionava com a simbologia d'una penit\xE8ncia compartida, on tots
+    i totes lluitem contra els nostres dubtes existencials i els nostres dimonis,
+    afectant en el proc\xE9s les persones que ens envolten. \r\n\r\nGr\xE0cies per
+    jugar! \r\n\r\nL'equip de Two Weeks at Home\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}
   m_sharedMaterial: {fileID: -7373799568276540995, guid: 9f4fc8167e28517498dce6a8466ec4ce, type: 2}

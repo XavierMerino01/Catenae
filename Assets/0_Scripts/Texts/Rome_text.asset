@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Rome_text
   m_EditorClassIdentifier: 
   Texts:
-  - Esta batalla no la ganaremos
-  - La conciencia es nuestro peor enemigo
-  - "Roma no se construy\xF3 en dos d\xEDas. Nuestro final s\xED"
-  - La vida es un circo
-  - "\xA1Ave C\xE9sar! \xA1Los que van a morir te saludan!"
-  - "Llegu\xE9, vi, ca\xED"
-  - "La situaci\xF3n es adversa, y la esperanza, poca"
+  - Aquesta batalla no la guanyarem
+  - "La consci\xE8ncia \xE9s el nostre pitjor enemic"
+  - "Roma no es va construir en dos dies. El nostre final s\xED"
+  - "La vida \xE9s un circ"
+  - "Au C\xE8sar! Els que moriran et saluden!"
+  - Vaig arribar, vaig veure, vaig caure
+  - "La situaci\xF3 \xE9s adversa i l'esperan\xE7a poca."

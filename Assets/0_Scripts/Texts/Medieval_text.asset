@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Medieval_text
   m_EditorClassIdentifier: 
   Texts:
-  - "No a nosotros, se\xF1or. No a nosotros"
-  - Cargo con una cruz.
-  - Nuestros pasos van en contra del viento
-  - "\xA1Ten misericordia, pues estoy arrepentido!"
-  - "Hoy tengo el d\xEDa cruzado\u2026"
-  - Los herejes acechan en cada esquina
+  - No a nosaltres, senyor. No a nosaltres
+  - Carrego amb una creu.
+  - Els nostres passos van en contra del vent
+  - "Tingues miseric\xF2rdia, doncs estic penedit!"
+  - Avui tinc el dia creuat...
+  - Els heretges aguaiten a cada cantonada

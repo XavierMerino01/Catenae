@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Contemporary_text
   m_EditorClassIdentifier: 
   Texts:
-  - " \xBFPor qu\xE9 la vida no viene con manual de instrucciones?"
-  - Me han funado...
-  - "2% de bater\xEDa"
-  - ' La vida es breve como la Level UP Game Jam'
-  - "\xA1No somos m\xE1s que memes!"
-  - "Bruh\u2026"
+  - "Per qu\xE8 la vida no ve amb manual d'instruccions?"
+  - M'han funat...
+  - 2% de bateria
+  - "La vida \xE9s breu com la Level UP Game Jam "
+  - "No som m\xE9s que mems!"
+  - Bruh...

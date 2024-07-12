@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Egipt_text
   m_EditorClassIdentifier: 
   Texts:
-  - "\xA1Por tutankam\xF3n, estamos perdidos!"
-  - "Acabar\xE9 de ayudante de esclavo\u2026"
-  - "\xA1Anubis, ten piedad de mi alma!"
-  - "\xA1Si todos tiramos en la misma direcci\xF3n, el mundo volcar\xE1!"
-  - "A m\xED que me embalsamen\u2026"
+  - Per Tutankamon, estem perduts!
+  - "Acabar\xE9 d'ajudant d'esclau"
+  - "Anubis, tingueu pietat de la meva \xE0nima!"
+  - "Si tots tirem en la mateixa direcci\xF3, el m\xF3n bolcar\xE0!"
+  - A mi que m'embalsamin...

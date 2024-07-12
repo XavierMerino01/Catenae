@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ModernAge_text
   m_EditorClassIdentifier: 
   Texts:
-  - "\xBFPor qu\xE9 existimos?"
-  - La belleza perece en la vida
-  - Es mejor adaptarse a la vida que rebelarse a ella
-  - "\xBFValoramos suficiente la vida?"
-  - He malgastado mis horas
-  - Todos sufrimos nuestro intenso apocalipsis
+  - "Per qu\xE8 existim?"
+  - La bellesa mor a la vida
+  - "\xC9s millor adaptar-se a la vida que rebel\xB7lar-s'hi"
+  - "\xBFValorem prou la vida?"
+  - He malbaratat les meves hores
+  - Tots patim el nostre intens apocalipsi

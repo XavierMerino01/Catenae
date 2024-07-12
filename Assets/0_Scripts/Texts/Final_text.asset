@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Final_text
   m_EditorClassIdentifier: 
   Texts:
-  - "\xBFQu\xE9 es eso? "
-  - "\xA1Ya casi lo tenemos, estirad!"
-  - "\xA1Dios m\xEDo!"
-  - "\xA1No puedo creerlo!"
-  - "Ahora todo tiene sentido\u2026"
+  - "Qu\xE8 \xE9s all\xF2?"
+  - "Ja gaireb\xE9 ho tenim, estireu!"
+  - "D\xE9u meu!"
+  - No m'ho puc creure!
+  - "Ara tot t\xE9 sentit..."
   - "\xA1Ohmyga!"
